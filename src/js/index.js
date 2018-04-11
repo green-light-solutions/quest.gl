@@ -34,7 +34,7 @@
 
         if (nextIndex === 3) {
           slideInterval = setInterval(() => {
-            //$.fn.fullpage.moveSlideRight();
+            $.fn.fullpage.moveSlideRight();
           }, 5e3);
         }
 
