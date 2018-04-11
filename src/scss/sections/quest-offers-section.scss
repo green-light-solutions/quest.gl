@@ -1,6 +1,11 @@
 .section.quest-offers-section {
-  background-color: $color-primary;
+  background: url('../../assets/img/quest-bg.png') no-repeat center $color-primary;
+  background-size: cover;
   color: $color-white;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url('../../assets/img/quest-bg@2x.png');
+  }
 
   h2.slide-heading {
     color: $color-gray;
@@ -14,43 +19,10 @@
     left: 0;
     width: 100%;
     z-index: 1029;
-
-    &::before {
-      content: 'Quest helps with';
-    }
-  }
-
-  @mixin slide-bg($index) {
-    background: url('../../assets/img/slides/slidebg'+ $index + '.png') no-repeat center;
-    background-size: cover;
-
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      background: url('../../assets/img/slides/slidebg'+ $index +'@2x.png') no-repeat center;
-    }
   }
 
   .slide {
     position: relative;
-
-    &.slide1 {
-      @include slide-bg('1');
-    }
-
-    &.slide2 {
-      @include slide-bg('2');
-    }
-
-    &.slide3 {
-      @include slide-bg('3');
-    }
-
-    &.slide4 {
-      @include slide-bg('4');
-    }
-
-    &.slide5 {
-      @include slide-bg('2');
-    }
 
     .panel {
       margin: auto;
@@ -86,9 +58,11 @@
     bottom: 70px;
 
     ul li {
-      margin: 0 10px;
+      margin: 0 15px;
 
       a {
+        left: -12px;
+
         span {
           border-radius: 3px;
           background: $color-white;

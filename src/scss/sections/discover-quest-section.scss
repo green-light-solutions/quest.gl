@@ -81,11 +81,13 @@
     right: 10%;
     max-height: 90%;
     transform: translateY(100%);
-    transition: transform .6s ease-in $scrolling-speed;
+    transition: transform .6s ease-in $scrolling-speed, opacity 1s ease-in $scrolling-speed;
+    opacity: 0;
   }
 
   &.active .quest-device-preview {
     transform: translateY(0);
+    opacity: 1;
   }
 
   @media screen and (min-width: $screen-lg-max) {

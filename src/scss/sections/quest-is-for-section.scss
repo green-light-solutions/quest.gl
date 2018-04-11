@@ -13,7 +13,9 @@
     font-weight: bold;
     font-size: 5.5rem;
     line-height: 6.8rem;
-    margin-bottom: 12rem;
+    margin-bottom: 16rem;
+    max-width: 1000px;
+    display: inline-block;
   }
 
   &.active .display-table .display-table-cell .content {
@@ -49,6 +51,7 @@
           font-size: 2rem;
           font-weight: bold;
           line-height: 3.2rem;
+          height: 60px;
         }
       }
 
@@ -72,7 +75,7 @@
     h2 {
       font-size: 2.7rem;
       line-height: 3.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
       padding: 0 10px;
     }
 
@@ -88,7 +91,7 @@
       .display-table-cell {
         .content {
           display: inline-block;
-          margin: 20px 0;
+          margin: 0;
           width: 100%;
 
           img {
@@ -100,6 +103,7 @@
             font-size: 1.3rem;
             font-weight: bold;
             line-height: 1.5rem;
+            height: 50px;
           }
         }
       }
