@@ -2,6 +2,24 @@
   background-color: $color-primary;
   color: $color-white;
 
+  h2.slide-heading {
+    color: $color-gray;
+    text-align: center;
+    font-family: $font-europa;
+    font-size: 5.5rem;
+    line-height: 5.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 12%;
+    left: 0;
+    width: 100%;
+    z-index: 1029;
+
+    &::before {
+      content: 'Quest helps with';
+    }
+  }
+
   @mixin slide-bg($index) {
     background: url('../../assets/img/slides/slidebg'+ $index + '.jpg') no-repeat center;
     background-size: cover;
@@ -31,24 +49,7 @@
     }
 
     &.slide5 {
-      @include slide-bg('5');
-    }
-
-    h2.slide-heading {
-      color: $color-gray;
-      text-align: center;
-      font-family: $font-europa;
-      font-size: 5.5rem;
-      line-height: 5.5rem;
-      font-weight: bold;
-      position: absolute;
-      top: 10%;
-      left: 0;
-      width: 100%;
-
-      &::before {
-        content: 'Quest helps with';
-      }
+      @include slide-bg('2');
     }
 
     .panel {
@@ -73,23 +74,23 @@
       }
 
       h4 {
-        font-weight: 300;
-        font-size: 5.5rem;
-        line-height: 7rem;
+        font-weight: lighter;
+        font-size: 4.5rem;
+        line-height: 6.5rem;
       }
     }
   }
 
   .fp-slidesNav.bottom {
     text-align: center;
-    bottom: 40px;
+    bottom: 70px;
 
     ul li {
       margin: 0 10px;
 
       a {
         span {
-          border-radius: 2px;
+          border-radius: 3px;
           background: $color-white;
           opacity: .5;
           width: 25px;
@@ -108,14 +109,18 @@
   }
 
   @media screen and (max-width: $screen-sm-max) {
+    h2.slide-heading {
+      font-size: 3rem;
+      line-height: 3rem;
+      top: 15%;
+    }
+
+    .fp-slidesNav.bottom {
+      bottom: 40px;
+    }
+
     .slide {
       padding: 0 20px;
-
-      h2.slide-heading {
-        font-size: 3rem;
-        line-height: 3rem;
-        top: calc(10% + 1rem);
-      }
 
       .panel {
         border-radius: 14px;
@@ -134,7 +139,7 @@
         }
 
         h4 {
-          font-weight: 300;
+          font-weight: lighter;
           font-size: 2rem;
           line-height: 3rem;
         }

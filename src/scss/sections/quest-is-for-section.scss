@@ -30,12 +30,13 @@
         max-width: 100%;
         display: inline-block;
         margin: 50px 0;
-        transition: transform .5s ease-in-out $scrolling-speed, opacity 1s ease-in-out $scrolling-speed;
+        transition: transform 1s ease-in-out $scrolling-speed, opacity 1s ease-in-out $scrolling-speed;
         transform: translateY(150%);
         opacity: 0;
 
         img {
           width: 100%;
+          margin-bottom: 1.5rem;
         }
 
         .label {
@@ -45,6 +46,18 @@
           line-height: 3.2rem;
         }
       }
+
+      &:nth-child(2) .content {
+        transition-delay: .9s;
+      }
+
+      &:nth-child(3) .content {
+        transition-delay: 1.1s;
+      }
+
+      &:nth-child(4) .content {
+        transition-delay: 1.2s;
+      }
     }
   }
 
@@ -52,7 +65,7 @@
     h2 {
       font-size: 2.7rem;
       line-height: 3.2rem;
-      margin: 6rem 0 2rem;
+      margin-bottom: 2rem;
       padding: 0 10px;
     }
 
@@ -72,14 +85,14 @@
           width: 100%;
 
           img {
-            width: 100%;
+            width: 70%;
           }
 
           .label {
             color: $color-gray;
             font-size: 1.3rem;
             font-weight: bold;
-            line-height: 1.7rem;
+            line-height: 1.5rem;
           }
         }
       }

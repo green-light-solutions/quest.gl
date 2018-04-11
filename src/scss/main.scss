@@ -1,17 +1,22 @@
-@import './variables.scss';
-@import './fonts.scss';
-@import './animations.scss';
-@import './controls.scss';
-@import './layout.scss';
+@import './variables';
+@import './fonts';
+@import './animations';
+@import './controls';
+@import './layout';
 @import '../../node_modules/fullpage.js/dist/jquery.fullpage';
-@import '../../node_modules/font-awesome/scss/font-awesome.scss';
+@import '../../node_modules/font-awesome/scss/font-awesome';
 
 html {
   font-size: 10px;
   line-height: 16px;
   font-family: $font-proxima-nova;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 0;
     font-family: $font-europa;
   }
@@ -51,6 +56,7 @@ html {
           .letters {
             color: $color-white;
           }
+
           .dot,
           .icon {
             color: $color-primary;
@@ -76,7 +82,8 @@ html {
           }
 
           &.white svg {
-            .icon, .dot {
+            .icon,
+            .dot {
               fill: $color-white;
             }
           }
@@ -103,8 +110,8 @@ html {
   }
 }
 
-@import './sections/hero-section.scss';
-@import './sections/discover-quest-section.scss';
-@import './sections/quest-offers-section.scss';
-@import './sections/quest-is-for-section.scss';
-@import './sections/contact-section.scss';
+@import './sections/hero-section';
+@import './sections/discover-quest-section';
+@import './sections/quest-offers-section';
+@import './sections/quest-is-for-section';
+@import './sections/contact-section';

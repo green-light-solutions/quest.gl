@@ -6,7 +6,7 @@
   &::before {
     content: 'What is Quest';
     position: absolute;
-    top: 8%;
+    top: 15%;
     width: 85%;
     text-align: center;
     font-family: $font-europa;
@@ -97,9 +97,7 @@
 
   @media screen and (max-width: $screen-sm-max) {
     &::before {
-      top: 35%;
-      font-size: 10rem;
-      line-height: 10rem;
+      display: none;
     }
 
     .content-wrapper {
@@ -113,24 +111,25 @@
         }
 
         p {
-          font-size: 1.5rem;
-          line-height: 1.8rem;
+          font-size: 1.7rem;
+          line-height: 2.7rem;
           margin-bottom: 4rem;
         }
 
         h4 {
-          font-size: 2.5rem;
-          line-height: 2.5rem;
+          font-size: 2rem;
+          line-height: 2rem;
           margin-bottom: 0.5rem;
         }
 
         ul {
-          padding: 2rem;
+          padding: 0 2rem;
 
           li {
             font-size: 1.5rem;
-            line-height: 2rem;
+            line-height: 3rem;
             padding-left: 1.5rem;
+            font-weight: lighter;
           }
         }
       }

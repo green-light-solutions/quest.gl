@@ -7,7 +7,7 @@
   padding: 0 24px;
   transition: all .3s linear;
   font-weight: lighter;
-  border-radius: 20px;
+  border-radius: 25px;
   border: 1px solid $color-white;
 
   &.delay {
@@ -25,11 +25,17 @@
   &.btn-primary {
     color: $color-primary;
     border-color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
   }
 
   @media screen and (max-width: $screen-sm) {
     font-size: 1.4rem;
     line-height: 3rem;
     padding: 0 10px;
+    border-color: transparent !important;
   }
 }

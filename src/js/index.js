@@ -13,6 +13,7 @@
       slidesNavigation: true,
       slidesNavPosition: 'bottom',
       controlArrows: false,
+      paddingTop: '55px',
       onLeave: (index, nextIndex) => {
         clearInterval(slideInterval);
         logo.removeClass();
@@ -27,13 +28,13 @@
           btnReady.addClass('btn-link');
         } else if (nextIndex === 2 || nextIndex === 4) {
           btnReady.addClass('btn-primary');
-        } else if(nextIndex !== 3) {
+        } else if (nextIndex !== 3) {
           btnReady.addClass('hidden');
         }
 
         if (nextIndex === 3) {
           slideInterval = setInterval(() => {
-            $.fn.fullpage.moveSlideRight();
+            //$.fn.fullpage.moveSlideRight();
           }, 5e3);
         }
 
