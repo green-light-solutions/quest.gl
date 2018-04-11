@@ -8,6 +8,27 @@
       logo.html(jQuery(response).find('svg'));
     }, 'xml');
 
+    $('#contact-form').submit(e => {
+      e.preventDefault();
+
+      $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: 'https://api.dev.quest.gl/marketing-data/contacts',
+        data: JSON.stringify({ email: $('#user-input-email').val() }),
+        dataType: 'json',
+        success: () => {
+          $('#output-message-heading').text('Thank you');
+          $('#output-message').text('for submitting your email');
+          $('#contact-form').hide();
+        },
+        error: () => {
+          $('#output-message-heading').text('Sorry');
+          $('#output-message').text('We encountered some kind of error. Please try again later');
+        },
+      });
+    });
+
     $('#fullpage').fullpage({
       anchors:['hero', 'discover-quest', 'quest-offers', 'using-quest', 'contact'],
       slidesNavigation: true,

@@ -21,11 +21,11 @@
   }
 
   @mixin slide-bg($index) {
-    background: url('../../assets/img/slides/slidebg'+ $index + '.jpg') no-repeat center;
+    background: url('../../assets/img/slides/slidebg'+ $index + '.png') no-repeat center;
     background-size: cover;
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      background: url('../../assets/img/slides/slidebg'+ $index +'@2x.jpg') no-repeat center;
+      background: url('../../assets/img/slides/slidebg'+ $index +'@2x.png') no-repeat center;
     }
   }
 

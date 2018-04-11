@@ -1,6 +1,11 @@
 .section.quest-is-for-section {
   text-align: center;
   position: relative;
+  background: url('../../assets/img/quest-is-for.png') no-repeat center 15%;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background: url('../../assets/img/quest-is-for@2x.png') no-repeat center;
+  }
 
   h2 {
     font-family: $font-europa;
@@ -62,6 +67,8 @@
   }
 
   @media screen and (max-width: $screen-sm-max) {
+    background: none;
+
     h2 {
       font-size: 2.7rem;
       line-height: 3.2rem;

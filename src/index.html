@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quest</title>
+  <title>Quest.gl</title>
   <base href="/"/>
   <script src="lib.min.js"></script>
   <script src="bundle.min.js"></script>
@@ -147,17 +147,32 @@
     <div class="section contact-section">
       <div class="content-wrapper">
         <div class="content">
-          <h2>Contact us</h2>
-          <h3>Our team will be happy to set up a demo for you</h3>
+          <h2 id="output-message-heading">Contact us</h2>
+          <h3 id="output-message">Our team will be happy to set up a demo for you</h3>
 
-          <form>
-            <input class="field" type="text" placeholder="Your email"/>
-            <button class="form-btn" type="submit">Submit</button>
+          <form id="contact-form">
+            <div class="input-wrapper">
+              <input class="field" name="email" id="user-input-email" type="email" placeholder="Your email"/>
+              <button class="form-btn" type="submit">Submit</button>
+            </div>
           </form>
         </div>
       </div>
       <footer>
-
+        <div class="footer-left">
+          <div class="green-light">
+            <img src="assets/img/gl-logo.svg" alt="green-light.com">
+            <p>
+              We are an international team of tech pioneers, creatives and coding wizards that strives to streamline the relationship between people and technology.
+            </p>
+            <a href="https://green-light.com/" target="_blank">Green-light.com <i class="fa fa-fw fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <a href="https://twitter.com/GreenlightGLS" target="_blank"><i class="fa fa-fw fa-twitter-square"></i></a>
+          <a href="https://www.facebook.com/Greenlight-1143592165731435/" target="_blank"><i class="fa fa-fw fa-facebook-square"></i></a>
+          <a href="https://www.linkedin.com/company/15180754/" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i></a>
+        </div>
       </footer>
     </div>
   </div>
