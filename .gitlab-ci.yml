@@ -1,0 +1,58 @@
+image: docker:latest
+
+variables:
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - docker login -u "$DOCKER_LOGIN" -p "$DOCKER_PASSWORD" docker-registry.green-light.com
+  - IMAGE_NAME=$(date +%y%m%d)-$(echo $CI_COMMIT_SHA | cut -c 1-7)
+  - DEV_TAG=docker-registry.green-light.com/quest/microsite:latest-dev
+  - PROD_TAG=docker-registry.green-light.com/quest/microsite:latest
+
+build-dev:
+  stage: build
+  script:
+    - docker build --pull -t "$DEV_TAG" .
+    - docker push "$DEV_TAG"
+  tags:
+    - docker
+    - vshosting-cluster
+  only:
+    - dev
+
+build-prod:
+  stage: build
+  script:
+    - docker build --pull -t "$PROD_TAG" .
+    - docker push "$PROD_TAG"
+  tags:
+    - docker
+    - vshosting-cluster
+  only:
+    - master
+
+deploy-dev:
+  stage: deploy
+  script:
+    - docker pull $DEV_TAG
+    - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $DEV_TAG) quest-dev_microsite
+  tags:
+    - docker
+    - vshosting-cluster
+  only:
+    - dev
+
+deploy-prod:
+  stage: deploy
+  script:
+    - docker pull $PROD_TAG
+    - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $PROD_TAG) quest_microsite
+  tags:
+    - docker
+    - vshosting-cluster
+  only:
+    - master

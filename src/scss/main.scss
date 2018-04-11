@@ -1,18 +1,117 @@
+@import './variables';
+@import './fonts';
+@import './animations';
+@import './controls';
+@import './layout';
+@import '../../node_modules/fullpage.js/dist/jquery.fullpage';
+@import '../../node_modules/font-awesome/scss/font-awesome';
+
 html {
   font-size: 10px;
+  line-height: 16px;
+  font-family: $font-proxima-nova;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: $font-europa;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 
   body {
     font-size: 1.3rem;
 
-    h1 {
-      font-size: 3.4rem;
-      color: #333;
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1030;
+      padding: 25px 30px;
+      width: 100%;
+
+      h1 {
+        float: left;
+        margin: 6px 0;
+
+        @media screen and (max-width: $screen-sm) {
+          margin: 3px 0;
+        }
+
+        #logo {
+          svg {
+            .letters,
+            .dot,
+            .icon {
+              transition: fill .3s linear;
+            }
+          }
+
+          .letters {
+            color: $color-white;
+          }
+
+          .dot,
+          .icon {
+            color: $color-primary;
+          }
+
+          &.delay {
+            svg {
+              .letters,
+              .dot,
+              .icon {
+                transition-delay: $scrolling-speed;
+              }
+            }
+          }
+
+          &.compact {
+            svg {
+              .letters,
+              .dot {
+                fill: transparent;
+              }
+            }
+          }
+
+          &.white svg {
+            .icon,
+            .dot {
+              fill: $color-white;
+            }
+          }
+
+          &.black svg .letters {
+            fill: $color-black;
+          }
+        }
+      }
+
+      #btn-ready {
+        float: right;
+        text-decoration: none;
+      }
+
+      @media screen and (max-width: $screen-sm-max) {
+        padding: 10px 15px;
+      }
     }
 
-    .container {
-      &.main-container {
-        padding-top: 80px;
-      }
+    .hidden {
+      display: none;
     }
   }
 }
+
+@import './sections/hero-section';
+@import './sections/discover-quest-section';
+@import './sections/quest-offers-section';
+@import './sections/quest-is-for-section';
+@import './sections/contact-section';

@@ -1,0 +1,144 @@
+.section.discover-quest-section {
+  position: relative;
+  text-align: center;
+  background-color: $color-white;
+
+  &::before {
+    content: 'What is Quest';
+    position: absolute;
+    top: 15%;
+    width: 85%;
+    text-align: center;
+    font-family: $font-europa;
+    font-weight: bold;
+    font-size: 15.5rem;
+    line-height: 15.5rem;
+    color: #eee;
+    opacity: 0.64;
+  }
+
+  &.active {
+    .content-wrapper .content {
+      opacity: 1;
+    }
+  }
+
+  .content-wrapper {
+    position: relative;
+    width: 65%;
+    padding: 0 20px;
+
+    .content {
+      width: 520px;
+      max-width: 100%;
+      display: inline-block;
+      text-align: left;
+      opacity: 0;
+      transition: opacity .7s ease-in-out $scrolling-speed;
+
+      h2 {
+        color: $color-gray;
+        font-family: $font-europa;
+        font-size: 5.5rem;
+        line-height: 5.5rem;
+        font-weight: bold;
+        margin-bottom: 3rem;
+      }
+
+      p {
+        color: $color-gray;
+        font-size: 2.7rem;
+        line-height: 3.9rem;
+        margin-bottom: 5rem;
+        font-weight: lighter;
+      }
+
+      h4 {
+        font-family: $font-europa;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        color: $color-gray;
+        margin-bottom: 1.5rem;
+      }
+
+      ul {
+        padding: 2rem;
+        list-style-image: url('../../assets/img/times.png');
+
+        li {
+          font-size: 2rem;
+          color: $color-gray;
+          line-height: 4rem;
+          padding-left: 2rem;
+        }
+      }
+    }
+  }
+
+  .quest-device-preview {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    max-height: 90%;
+    transform: translateY(100%);
+    transition: transform .6s ease-in $scrolling-speed, opacity 1s ease-in $scrolling-speed;
+    opacity: 0;
+  }
+
+  &.active .quest-device-preview {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @media screen and (min-width: $screen-lg-max) {
+    &::before {
+      font-size: 20rem;
+      line-height: 20rem;
+    }
+  }
+
+  @media screen and (max-width: $screen-sm-max) {
+    &::before {
+      display: none;
+    }
+
+    .content-wrapper {
+      width: 100%;
+
+      .content {
+        h2 {
+          font-size: 3rem;
+          line-height: 3rem;
+          margin-bottom: 2rem;
+        }
+
+        p {
+          font-size: 1.7rem;
+          line-height: 2.7rem;
+          margin-bottom: 4rem;
+        }
+
+        h4 {
+          font-size: 2rem;
+          line-height: 2rem;
+          margin-bottom: 0.5rem;
+        }
+
+        ul {
+          padding: 0 2rem;
+
+          li {
+            font-size: 1.5rem;
+            line-height: 3rem;
+            padding-left: 1.5rem;
+            font-weight: lighter;
+          }
+        }
+      }
+    }
+
+    .quest-device-preview {
+      display: none;
+    }
+  }
+}

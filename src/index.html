@@ -3,16 +3,166 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quest</title>
+  <title>Quest.gl</title>
   <base href="/"/>
   <script src="lib.min.js"></script>
   <script src="bundle.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="lib.min.css">
-  <link rel="stylesheet" type="text/css" href="bundle.min.css">
+  <link rel="stylesheet" type="text/css" href="bundle.min.css"/>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
-  <div class="container main-container">
-    <h1>Quest micro site</h1>
+  <nav>
+    <h1>
+      <a href="#hero" id="logo" class=""><img src="/assets/img/logo.svg" alt="Quest.gl"/></a>
+    </h1>
+    <a href="#contact" class="btn btn-link" id="btn-ready">I'm ready for Quest</a>
+  </nav>
+  <div id="fullpage">
+    <div class="section hero-section">
+      <div class="headings">
+        <h2>Build better teams</h2>
+        <h3>Having talent is one thing. Knowing where to find it, is another.</h3>
+      </div>
+      <div class="hero-footer">
+        <img src="/assets/img/next-slide.png" srcset="/assets/img/next-slide@2x.png 2x" alt=""/>
+        <a class="hero-footer-content" href="#discover-quest">
+            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+            <br/>
+            <span>Discover Quest</span>
+        </a>
+      </div>
+    </div>
+    <div class="section discover-quest-section">
+      <div class="content-wrapper">
+        <div class="content">
+          <h2>What is Quest</h2>
+          <p>A mobile application using AI to build small, agile, fast and mission-focused teams. Quest matches talents, skills and experiences with everyday quests.</p>
+          <h4>Quest is NOT</h4>
+          <ul>
+            <li>A project management tool</li>
+            <li>An HR tool</li>
+            <li>An employee directory</li>
+            <li>Another company chat room</li>
+          </ul>
+        </div>
+      </div>
+
+      <img class="quest-device-preview" src="/assets/img/device-preview.png" srcset="/assets/img/device-preview@2x.png 2x" alt="">
+    </div>
+    <div class="section quest-offers-section">
+      <h2 class="slide-heading">Why Quest?</h2>
+      <div class="slide slide1">
+        <div class="panel">
+          <h3>For Purpose</h3>
+          <h4>More than ever, individuals look for purpose and higher value.</h4>
+        </div>
+      </div>
+      <div class="slide slide2">
+        <div class="panel">
+          <h3>To Empower</h3>
+          <h4>Organisations look to empower teams and realise their true potential.</h4>
+        </div>
+      </div>
+      <div class="slide slide3">
+        <div class="panel">
+          <h3>To Lead</h3>
+          <h4>Top-down hierarchical organisations don’t lead anymore.</h4>
+        </div>
+      </div>
+    </div>
+    <div class="section quest-is-for-section">
+      <h2>Quest is designed for all modern companies with desire:</h2>
+
+      <div class="display-table">
+        <div class="display-table-row">
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon1.png" srcset="assets/img/icons/icon1@2x.png 2x" alt="">
+              <div class="label">To create dynamic networks of highly engaged talents.</div>
+            </div>
+          </div>
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon2.png" srcset="assets/img/icons/icon2@2x.png 2x" alt="">
+              <div class="label">To empower and maximise the potential of talents.</div>
+            </div>
+          </div>
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon3.png" srcset="assets/img/icons/icon3@2x.png 2x" alt="">
+              <div class="label">To rapidly increase speed to market.</div>
+            </div>
+          </div>
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon4.png" srcset="assets/img/icons/icon4@2x.png 2x" alt="">
+              <div class="label">To connect teams across locations, offices, countries.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="display-table mobile">
+        <div class="display-table-row">
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon1.png" srcset="assets/img/icons/icon1@2x.png 2x" alt="">
+              <div class="label">To create dynamic networks of highly engaged talents.</div>
+            </div>
+          </div>
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon2.png" srcset="assets/img/icons/icon2@2x.png 2x" alt="">
+              <div class="label">To empower and maximise the potential of talents.</div>
+            </div>
+          </div>
+        </div>
+        <div class="display-table-row">
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon3.png" srcset="assets/img/icons/icon3@2x.png 2x" alt="">
+              <div class="label">To rapidly increase speed to market.</div>
+            </div>
+          </div>
+          <div class="display-table-cell">
+            <div class="content">
+              <img src="assets/img/icons/icon4.png" srcset="assets/img/icons/icon4@2x.png 2x" alt="">
+              <div class="label">To connect teams across locations, offices, countries.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section contact-section">
+      <div class="content-wrapper">
+        <div class="content">
+          <h2 id="output-message-heading">Ready to upgrade your company?</h2>
+          <h3 id="output-message">Request a Quest demo</h3>
+
+          <form id="contact-form">
+            <div class="input-wrapper">
+              <input class="field" name="email" id="user-input-email" type="email" required placeholder="Your email"/>
+              <button class="form-btn" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer>
+        <div class="footer-left">
+          <div class="green-light">
+            <img src="assets/img/gl-logo.svg" alt="green-light.com">
+            <p>
+              We are an international team of tech pioneers, creatives and coding wizards that strives to streamline the relationship between people and technology.
+            </p>
+            <a href="https://green-light.com/" target="_blank">Green-light.com <i class="fa fa-fw fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <a href="https://twitter.com/GreenlightGLS" target="_blank"><i class="fa fa-fw fa-twitter-square"></i></a>
+          <a href="https://www.facebook.com/Greenlight-1143592165731435/" target="_blank"><i class="fa fa-fw fa-facebook-square"></i></a>
+          <a href="https://www.linkedin.com/company/15180754/" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i></a>
+        </div>
+      </footer>
+    </div>
   </div>
 </body>
 </html>
