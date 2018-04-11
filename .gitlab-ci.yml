@@ -50,7 +50,7 @@ deploy-prod:
   stage: deploy
   script:
     - docker pull $PROD_TAG
-    - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $PROD_TAG) quest_microsite
+    - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $PROD_TAG) quest-prod_microsite
   tags:
     - docker
     - vshosting-cluster
