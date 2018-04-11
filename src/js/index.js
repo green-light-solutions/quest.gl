@@ -36,7 +36,13 @@
     });
 
     $('#fullpage').fullpage({
-      anchors:['hero', 'discover-quest', 'quest-offers', 'using-quest', 'contact'],
+      anchors: [
+        'introduction',
+        'what-is-quest',
+        'why-quest',
+        'using-quest',
+        'contact',
+      ],
       slidesNavigation: true,
       slidesNavPosition: 'bottom',
       controlArrows: false,

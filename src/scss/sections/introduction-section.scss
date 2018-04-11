@@ -1,7 +1,8 @@
-.section.hero-section {
+.section.introduction-section {
   color: $color-white;
   text-align: center;
   position: relative;
+  overflow: hidden;
 
   &::before {
     position: absolute;
