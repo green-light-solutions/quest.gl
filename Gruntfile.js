@@ -1,15 +1,8 @@
 module.exports = function(grunt) {
 
-  var libs = [
+  const libs = [
     'node_modules/jquery/dist/jquery.js',
-    'node_modules/jquery/dist/popper.js',
-    'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
-  ];
-
-  var stylesheets = [
-    'node_modules/bootstrap/scss/bootstrap.scss',
-    'node_modules/bootstrap/scss/bootstrap-grid.scss',
-    'node_modules/bootstrap/scss/bootstrap-reboot.scss',
+    'node_modules/fullpage.js/dist/jquery.fullpage.js',
   ];
 
   require('load-grunt-tasks')(grunt);
@@ -17,19 +10,18 @@ module.exports = function(grunt) {
   grunt.initConfig({
     paths: {
       src: {
-        assets: 'src/assets/**',
         js: 'src/js/**/*.js',
-        scss: 'src/scss/**/*.scss',
+        scss: 'src/scss/main.scss',
       },
       dest: {
-        code: 'dist',
-        assets: 'dist/assets',
+        code: 'dist'
       },
     },
     copy: {
       main: {
         files: [
-          { expand: true, flatten: true, src: ['<%= paths.src.assets %>'], dest: '<%= paths.dest.assets %>', filter: 'isFile' },
+          { expand: true, cwd: 'src', src: 'assets/**', dest: '<%= paths.dest.code %>', filter: 'isFile' },
+          { src: 'src/favicon.ico', dest: '<%= paths.dest.code %>/favicon.ico', filter: 'isFile' },
         ],
       },
     },
@@ -71,19 +63,6 @@ module.exports = function(grunt) {
       },
     },
     sass: {
-      lib: {
-        options: {
-          outputStyle: 'compressed',
-          sourceMap: true,
-          sourceMapContents: true,
-        },
-        files: [
-          {
-            src: stylesheets,
-            dest: '<%= paths.dest.code %>/lib.min.css',
-          },
-        ],
-      },
       main: {
         options: {
           outputStyle: 'compressed',
@@ -117,8 +96,15 @@ module.exports = function(grunt) {
         },
       },
       css: {
-        files: ['<%= paths.src.scss %>'],
-        tasks: ['sass:main'],
+        files: ['src/scss/**'],
+        tasks: ['sass'],
+        options: {
+          spawn: false,
+        },
+      },
+      assets: {
+        files: ['src/assets/**'],
+        tasks: ['copy'],
         options: {
           spawn: false,
         },

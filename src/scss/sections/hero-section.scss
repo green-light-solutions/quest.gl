@@ -1,0 +1,83 @@
+.section.hero-section {
+  color: $color-white;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/img/quest-hero-bg.jpg') no-repeat center;
+    background-size: cover;
+    animation: zoom 60s infinite linear;
+  }
+
+  &.active .headings {
+    opacity: 1;
+  }
+
+  .headings {
+    position: relative;
+    animation: fadeIn .5s ease-in;
+    opacity: 0;
+    transition: opacity .5s ease-in-out $scrolling-speed;
+
+    h2 {
+      font-size: 9rem;
+      font-weight: bold;
+      line-height: 13.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
+  }
+
+  @media screen and (max-width: $screen-sm-max) {
+    .headings {
+      h2 {
+        font-size: 5rem;
+        line-height: 5rem;
+      }
+
+      h3 {
+        font-size: 2rem;
+        line-height: 2rem;
+      }
+    }
+  }
+
+  .hero-footer {
+    position: absolute;
+    bottom: 0;
+    height: 15px;
+    background-color: $color-white;
+    width: 100%;
+
+    img {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero-footer-content {
+      position: absolute;
+      display: block;
+      width: 100%;
+      bottom: 20px;
+      font-size: 1.4rem;
+      color: #6a6a6a;
+      text-decoration: none;
+
+      .fa {
+        font-size: 2.5rem;
+        color: $color-primary;
+        margin-bottom: .5rem;
+      }
+    }
+  }
+}

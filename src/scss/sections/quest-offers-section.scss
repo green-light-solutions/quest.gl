@@ -1,0 +1,144 @@
+.section.quest-offers-section {
+  background-color: $color-primary;
+  color: $color-white;
+
+  @mixin slide-bg($index) {
+    background: url('../../assets/img/slides/slidebg'+ $index + '.jpg') no-repeat center;
+    background-size: cover;
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background: url('../../assets/img/slides/slidebg'+ $index +'@2x.jpg') no-repeat center;
+    }
+  }
+
+  .slide {
+    position: relative;
+
+    &.slide1 {
+      @include slide-bg('1');
+    }
+
+    &.slide2 {
+      @include slide-bg('2');
+    }
+
+    &.slide3 {
+      @include slide-bg('3');
+    }
+
+    &.slide4 {
+      @include slide-bg('4');
+    }
+
+    &.slide5 {
+      @include slide-bg('5');
+    }
+
+    h2.slide-heading {
+      color: $color-gray;
+      text-align: center;
+      font-family: $font-europa;
+      font-size: 5.5rem;
+      line-height: 5.5rem;
+      font-weight: bold;
+      position: absolute;
+      top: 10%;
+      left: 0;
+      width: 100%;
+
+      &::before {
+        content: 'Quest helps with';
+      }
+    }
+
+    .panel {
+      margin: auto;
+      color: $color-white;
+      background-color: rgba(#ff8c20, .6);
+      box-shadow: 49px 44px 62px -12px rgba(117, 57, 0 , .4);
+      border-radius: 14px;
+      padding: 60px 40px;
+      width: 920px;
+      max-width: 100%;
+
+      h3 {
+        font-family: $font-europa;
+        font-size: 8.6rem;
+        line-height: 8.6rem;
+        font-weight: bold;
+        position: relative;
+        left: calc(-40px - 8rem);
+        margin-bottom: 3rem;
+        text-shadow: 25px 30px 46px #bc5c01;
+      }
+
+      h4 {
+        font-weight: 300;
+        font-size: 5.5rem;
+        line-height: 7rem;
+      }
+    }
+  }
+
+  .fp-slidesNav.bottom {
+    text-align: center;
+    bottom: 40px;
+
+    ul li {
+      margin: 0 10px;
+
+      a {
+        span {
+          border-radius: 2px;
+          background: $color-white;
+          opacity: .5;
+          width: 25px;
+          height: 3px;
+          margin: 0;
+          transition: opacity .2s linear;
+        }
+
+        &.active, &:hover {
+          span {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-sm-max) {
+    .slide {
+      padding: 0 20px;
+
+      h2.slide-heading {
+        font-size: 3rem;
+        line-height: 3rem;
+        top: calc(10% + 1rem);
+      }
+
+      .panel {
+        border-radius: 14px;
+        padding: 30px 20px;
+        width: 920px;
+        max-width: 100%;
+
+        h3 {
+          font-family: $font-europa;
+          font-size: 3rem;
+          line-height: 3rem;
+          font-weight: bold;
+          position: relative;
+          left: auto;
+          margin-bottom: 4rem;
+        }
+
+        h4 {
+          font-weight: 300;
+          font-size: 2rem;
+          line-height: 3rem;
+        }
+      }
+    }
+  }
+}
