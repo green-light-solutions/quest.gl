@@ -1,14 +1,14 @@
 # Quest.gl microsite
 
 * we use Yarn instead of NPM
-* Run `yarn` to download and install dependencies
+* run `yarn` to download and install dependencies
 * run `grunt` which will start project on `http://localhost:3000`
 * run `grunt build` to build the project into `./dist`
 * run `grunt lint` to check your code formatting
 
 # Dev environment
 
-* will transpile your code from ES6 to JS and from SASS to SCSS
+* will transpile your code from ES6 to JS and from SASS to CSS
 * will minify and bundle your code
 * will run your application on dev server with livereload
 * will watch your files and will rebuild your app automatically
