@@ -132,8 +132,14 @@ module.exports = function(grunt) {
       },
       target: ['<%= paths.src.scss %>'],
     },
+    githooks: {
+      all: {
+        'pre-commit': 'lint',
+      }
+    }
   });
 
-  grunt.registerTask('default', ['uglify', 'sass', 'copy', 'htmlmin', 'connect', 'watch']);
-  grunt.registerTask('build', ['eslint', 'sasslint', 'uglify', 'sass', 'copy', 'htmlmin']);
+  grunt.registerTask('lint', ['eslint', 'sasslint']);
+  grunt.registerTask('default', ['githooks', 'uglify', 'sass', 'copy', 'htmlmin', 'connect', 'watch']);
+  grunt.registerTask('build', ['lint', 'uglify', 'sass', 'copy', 'htmlmin']);
 };
