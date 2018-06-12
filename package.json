@@ -27,6 +27,7 @@
     "grunt-eslint": "^20.1.0",
     "grunt-sass": "^2.1.0",
     "grunt-sass-lint": "^0.2.4",
+    "grunt-githooks": "^0.6.0",
     "load-grunt-tasks": "^3.5.2"
   }
 }

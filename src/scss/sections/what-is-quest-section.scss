@@ -1,10 +1,10 @@
-.section.discover-quest-section {
+.section.what-is-quest-section {
   position: relative;
   text-align: center;
   background-color: $color-white;
 
   &::before {
-    content: 'What is Quest';
+    content: 'What is Quest?';
     position: absolute;
     top: 15%;
     width: 85%;
@@ -42,35 +42,15 @@
         font-size: 5.5rem;
         line-height: 5.5rem;
         font-weight: bold;
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
       }
 
       p {
         color: $color-gray;
         font-size: 2.7rem;
         line-height: 3.9rem;
-        margin-bottom: 5rem;
+        margin-bottom: 3rem;
         font-weight: lighter;
-      }
-
-      h4 {
-        font-family: $font-europa;
-        font-size: 2.5rem;
-        line-height: 2.5rem;
-        color: $color-gray;
-        margin-bottom: 1.5rem;
-      }
-
-      ul {
-        padding: 2rem;
-        list-style-image: url('../../assets/img/times.png');
-
-        li {
-          font-size: 2rem;
-          color: $color-gray;
-          line-height: 4rem;
-          padding-left: 2rem;
-        }
       }
     }
   }
@@ -109,30 +89,13 @@
         h2 {
           font-size: 3rem;
           line-height: 3rem;
-          margin-bottom: 2rem;
+          margin-bottom: 4rem;
         }
 
         p {
           font-size: 1.7rem;
           line-height: 2.7rem;
-          margin-bottom: 4rem;
-        }
-
-        h4 {
-          font-size: 2rem;
-          line-height: 2rem;
-          margin-bottom: 0.5rem;
-        }
-
-        ul {
-          padding: 0 2rem;
-
-          li {
-            font-size: 1.5rem;
-            line-height: 3rem;
-            padding-left: 1.5rem;
-            font-weight: lighter;
-          }
+          margin-bottom: 3rem;
         }
       }
     }
