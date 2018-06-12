@@ -22,16 +22,11 @@
 
     .video-wrapper {
       display: inline-block;
-      box-shadow: 49px 44px 62px 0 rgba( 117, 57, 0, .4);
-
-      width: 960px;
-      height: 540px;
+      box-shadow: 49px 44px 62px 0 rgba(117, 57, 0, .4);
+      width: 640px;
+      height: 360px;
       max-width: 100%;
 
-      @media screen and (max-width: $screen-sm) {
-        width: 640px;
-        height: 360px;
-      }
 
       @media screen and (max-width: $screen-xs) {
         width: 384px;
