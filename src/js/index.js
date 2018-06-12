@@ -46,8 +46,8 @@
       anchors: [
         'introduction',
         'what-is-quest',
+        'how-it-works',
         'why-quest',
-        'using-quest',
         'contact',
       ],
       slidesNavigation: true,
