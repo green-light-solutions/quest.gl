@@ -20,13 +20,13 @@
       }
     }
 
-    #video {
+    .video-wrapper {
       display: inline-block;
-      margin: auto;
+      box-shadow: 49px 44px 62px 0 rgba( 117, 57, 0, .4);
+
       width: 960px;
       height: 540px;
       max-width: 100%;
-      box-shadow: 49px 44px 62px 0 rgba( 117, 57, 0, .4);
 
       @media screen and (max-width: $screen-sm) {
         width: 640px;
@@ -36,6 +36,11 @@
       @media screen and (max-width: $screen-xs) {
         width: 384px;
         height: 216px;
+      }
+
+      #video {
+        width: 100%;
+        height: 100%;
       }
     }
   }
