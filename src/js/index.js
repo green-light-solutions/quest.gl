@@ -3,6 +3,8 @@
     const logo = $('#logo');
     const btnReady = $('#btn-ready');
     const contactForm = $('#contact-form');
+    const video = $('#video');
+
     const autoSlide = function() {
       clearTimeout($.fn.fullpage.sliderTimeout);
       $.fn.fullpage.sliderTimeout = setTimeout(() => {
@@ -14,8 +16,13 @@
       logo.html(jQuery(response).find('svg'));
     }, 'xml');
 
+    video.one('click', () => {
+      window.gtag('event', 'video', { 'event_category': 'play' });
+    });
+
     contactForm.submit(e => {
       e.preventDefault();
+      window.gtag('event', 'submit', {'event_category': 'signup' });
 
       $.ajax({
         type: 'POST',
