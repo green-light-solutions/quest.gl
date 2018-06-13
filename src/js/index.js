@@ -3,7 +3,6 @@
     const logo = $('#logo');
     const btnReady = $('#btn-ready');
     const contactForm = $('#contact-form');
-    const video = $('#video');
 
     const autoSlide = function() {
       clearTimeout($.fn.fullpage.sliderTimeout);
@@ -15,10 +14,6 @@
     $.get('/assets/img/logo.svg', response => {
       logo.html(jQuery(response).find('svg'));
     }, 'xml');
-
-    video.one('click', () => {
-      window.gtag('event', 'video', { 'event_category': 'play' });
-    });
 
     contactForm.submit(e => {
       e.preventDefault();
@@ -69,6 +64,7 @@
         } else if (nextIndex === 2 || nextIndex === 4) {
           btnReady.addClass('btn-primary');
           logo.addClass('black');
+          window.gtag('event', 'video', {'event_category': 'play' });
         } else if (nextIndex !== 3) {
           btnReady.addClass('hidden');
         } else if (nextIndex === 3) {

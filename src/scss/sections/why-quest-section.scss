@@ -4,6 +4,8 @@
 
   &::before {
     content: 'What can Quest do for your company?';
+    font-family: $font-europa;
+    font-weight: bold;
     position: absolute;
     top: 10%;
     left: 10%;
@@ -43,7 +45,7 @@
 
     .display-table-cell {
       .content {
-        width: 230px;
+        width: 300px;
         max-width: 100%;
         display: inline-block;
         margin: 50px 0;
@@ -63,7 +65,7 @@
         .label {
           color: $color-gray;
           font-size: 2rem;
-          font-weight: bold;
+          font-weight: 600;
           line-height: 3.2rem;
           height: 60px;
         }
