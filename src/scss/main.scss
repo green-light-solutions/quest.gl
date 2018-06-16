@@ -45,6 +45,9 @@ html {
         }
 
         #logo {
+          transition: opacity .3s linear;
+          opacity: 1;
+
           svg {
             .letters,
             .dot,
@@ -63,20 +66,13 @@ html {
           }
 
           &.delay {
+            transition-delay: $scrolling-speed;
+
             svg {
               .letters,
               .dot,
               .icon {
                 transition-delay: $scrolling-speed;
-              }
-            }
-          }
-
-          &.compact {
-            svg {
-              .letters,
-              .dot {
-                fill: transparent;
               }
             }
           }
@@ -90,6 +86,20 @@ html {
 
           &.black svg .letters {
             fill: $color-black;
+          }
+
+          @media screen and (max-width: $screen-sm-max) {
+            svg {
+              .letters,
+              .dot {
+                fill: transparent !important;
+              }
+            }
+          }
+
+          &.hidden {
+            display: block;
+            opacity: 0;
           }
         }
       }

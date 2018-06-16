@@ -4,13 +4,6 @@
     const btnReady = $('#btn-ready');
     const contactForm = $('#contact-form');
 
-    const autoSlide = function() {
-      clearTimeout($.fn.fullpage.sliderTimeout);
-      $.fn.fullpage.sliderTimeout = setTimeout(() => {
-        $.fn.fullpage.moveSlideRight();
-      }, 7e3);
-    };
-
     $.get('/assets/img/logo.svg', response => {
       logo.html(jQuery(response).find('svg'));
     }, 'xml');
@@ -49,7 +42,6 @@
       slidesNavPosition: 'bottom',
       controlArrows: false,
       paddingTop: '55px',
-      onSlideLeave: autoSlide,
       onLeave: (index, nextIndex) => {
         logo.removeClass();
         btnReady.removeClass();
@@ -60,7 +52,8 @@
         }
 
         if (nextIndex === 1) {
-          btnReady.addClass('btn-link');
+          btnReady.addClass('btn-primary');
+          logo.addClass('hidden');
         } else if (nextIndex === 2 || nextIndex === 4) {
           btnReady.addClass('btn-primary');
           logo.addClass('black');
@@ -69,7 +62,6 @@
           btnReady.addClass('hidden');
         } else if (nextIndex === 3) {
           logo.addClass('white');
-          autoSlide();
         }
       },
     });

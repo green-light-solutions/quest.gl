@@ -30,15 +30,16 @@
 <body>
   <nav>
     <h1>
-      <a href="#hero" id="logo" class=""><img src="/assets/img/logo.svg" alt="Quest.gl"/></a>
+      <a href="#introduction" id="logo" class="hidden"><img src="/assets/img/logo.svg" alt="Quest.gl"/></a>
     </h1>
-    <a href="#contact" class="btn btn-link" id="btn-ready">I'm ready for Quest</a>
+    <a href="#contact" class="btn btn-primary" id="btn-ready">I'm ready for a demo</a>
   </nav>
   <div id="fullpage">
     <div class="section introduction-section">
       <div class="headings">
+        <img src="/assets/img/logo.svg" alt="Quest.gl"/>
         <h2>Build better teams</h2>
-        <h3>Having talent in your organization is one thing.<br/>Knowing where to find it is another.</h3>
+        <h3>Having talent in your organization is one thing. <span class="highlighted">Knowing where to find it is another</span></h3>
       </div>
       <div class="hero-footer">
         <img src="/assets/img/next-slide.png" srcset="/assets/img/next-slide@2x.png 2x" alt=""/>
@@ -53,12 +54,25 @@
       <div class="content-wrapper">
         <div class="content">
           <h2>What is Quest</h2>
-          <p><strong>A mobile application using AI</strong> to build small, agile, fast and mission-focused teams.</p>
-          <p><strong>Quest matches talents</strong>, skills and experiences with everyday quests.</p>
-          <p><strong>Quest translates your project’s description into a set of skills</strong> and helps you build the team you need.</p>
+          <p>
+            A mobile application using artificial intelligence to build flexible, agile and mission focused teams.
+          </p>
+          <p>
+            Quest translates your project‘s description into a set of skills and matches them with talents in your organization.
+          </p>
         </div>
       </div>
-      <img class="quest-device-preview" src="/assets/img/device-preview.png" srcset="/assets/img/device-preview@2x.png 2x" alt="">
+      <div class="quest-device-preview">
+        <img src="/assets/img/product-preview.png" srcset="/assets/img/product-preview@2x.png 2x" alt=""/>
+
+       <div>
+         <img class="icon" src="/assets/img/preview-icons/icon1.png" srcset="/assets/img/preview-icons/icon1@2x.png 2x" alt=""/>
+         <img class="icon" src="/assets/img/preview-icons/icon2.png" srcset="/assets/img/preview-icons/icon2@2x.png 2x" alt=""/>
+         <img class="icon" src="/assets/img/preview-icons/icon3.png" srcset="/assets/img/preview-icons/icon3@2x.png 2x" alt=""/>
+         <img class="icon" src="/assets/img/preview-icons/icon4.png" srcset="/assets/img/preview-icons/icon4@2x.png 2x" alt=""/>
+         <img class="icon" src="/assets/img/preview-icons/icon5.png" srcset="/assets/img/preview-icons/icon5@2x.png 2x" alt=""/>
+       </div>
+      </div>
     </div>
     <div class="section how-it-works-section">
       <div class="video-container">
@@ -159,6 +173,7 @@
             <div class="input-wrapper">
               <input class="field" name="email" id="user-input-email" type="email" required placeholder="Your email"/>
               <button class="form-btn" type="submit">Submit</button>
+              <button class="form-btn mobile" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
             </div>
           </form>
         </div>
