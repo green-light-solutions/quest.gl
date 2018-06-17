@@ -120,6 +120,12 @@ html {
   }
 }
 
+@media screen and (min-width: $screen-md-min) {
+  .section-test {
+    display: none;
+  }
+}
+
 @import './sections/introduction-section';
 @import './sections/what-is-quest-section';
 @import './sections/how-it-works-section';

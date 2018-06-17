@@ -42,6 +42,7 @@
       slidesNavPosition: 'bottom',
       controlArrows: false,
       paddingTop: '55px',
+      responsiveWidth: 768,
       onLeave: (index, nextIndex) => {
         logo.removeClass();
         btnReady.removeClass();
