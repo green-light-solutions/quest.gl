@@ -28,7 +28,7 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
-  <nav>
+  <nav class="hidden">
     <h1>
       <a href="#introduction" id="logo" class="hidden"><img src="/assets/img/logo.svg" alt="Quest.gl"/></a>
     </h1>
@@ -63,20 +63,21 @@
         </div>
       </div>
       <div class="quest-device-preview">
-        <img src="/assets/img/product-preview.png" srcset="/assets/img/product-preview@2x.png 2x" alt=""/>
-
-       <div>
-         <img class="icon" src="/assets/img/preview-icons/icon1.png" srcset="/assets/img/preview-icons/icon1@2x.png 2x" alt=""/>
-         <img class="icon" src="/assets/img/preview-icons/icon2.png" srcset="/assets/img/preview-icons/icon2@2x.png 2x" alt=""/>
-         <img class="icon" src="/assets/img/preview-icons/icon3.png" srcset="/assets/img/preview-icons/icon3@2x.png 2x" alt=""/>
-         <img class="icon" src="/assets/img/preview-icons/icon4.png" srcset="/assets/img/preview-icons/icon4@2x.png 2x" alt=""/>
-         <img class="icon" src="/assets/img/preview-icons/icon5.png" srcset="/assets/img/preview-icons/icon5@2x.png 2x" alt=""/>
-       </div>
-      </div>
+        <div class="animation-wrapper">
+          <img src="/assets/img/product-preview.png" srcset="/assets/img/product-preview@2x.png 2x" alt=""/>
+          <div class="icons">
+            <img class="icon" src="/assets/img/preview-icons/icon1.png" srcset="/assets/img/preview-icons/icon1@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon2.png" srcset="/assets/img/preview-icons/icon2@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon3.png" srcset="/assets/img/preview-icons/icon3@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon4.png" srcset="/assets/img/preview-icons/icon4@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon5.png" srcset="/assets/img/preview-icons/icon5@2x.png 2x" alt=""/>
+          </div>
+        </div>
+        </div>
     </div>
     <div class="section how-it-works-section">
       <div class="video-container">
-        <h2>See how it works</h2>
+        <h2>See how Quest works</h2>
         <div class="video-wrapper" style="position: relative;">
           <div class="overlay right"></div>
           <div class="overlay left"></div>
@@ -166,7 +167,7 @@
     <div class="section contact-section">
       <div class="content-wrapper">
         <div class="content">
-          <h2 id="output-message-heading">Ready to upgrade your company?</h2>
+          <h2 id="output-message-heading">Want to discover hidden talent in your company?</h2>
           <h3 id="output-message">Request a Quest demo</h3>
 
           <form id="contact-form">
@@ -181,11 +182,15 @@
       <footer>
         <div class="footer-left">
           <div class="green-light">
-            <img src="assets/img/gl-logo.svg" alt="green-light.com">
+            <div class="gl-logo-wrap">
+              <a href="https://green-light.com/" target="_blank">
+                <img src="assets/img/gl-logo.svg" alt="green-light.com">
+              </a>
+            </div>
             <p>
-              We are an international team of tech pioneers, creatives and coding wizards that strives to streamline the relationship between people and technology.
+              We are an international team of tech pioneers, creatives and coding wizards building technology solutions that make life and work better.
             </p>
-            <a href="https://green-light.com/" target="_blank">Green-light.com <i class="fa fa-fw fa-arrow-right"></i></a>
+            <a class="gl-link" href="https://green-light.com/" target="_blank">Green-light.com <i class="fa fa-fw fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="footer-right">

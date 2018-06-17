@@ -3,6 +3,7 @@
     const logo = $('#logo');
     const btnReady = $('#btn-ready');
     const contactForm = $('#contact-form');
+    const navbar = $('nav');
 
     $.get('/assets/img/logo.svg', response => {
       logo.html(jQuery(response).find('svg'));
@@ -19,8 +20,8 @@
         data: JSON.stringify({ email: contactForm.find('#user-input-email').val() }),
         dataType: 'json',
         success: () => {
-          $('#output-message-heading').text('Thank you');
-          $('#output-message').text('for submitting your email');
+          $('#output-message-heading').text('We appreciate your interest in Quest');
+          $('#output-message').text('Our team will be in touch with you soon to schedule a demo.');
           contactForm.hide();
         },
         error: () => {
@@ -46,6 +47,7 @@
       onLeave: (index, nextIndex) => {
         logo.removeClass();
         btnReady.removeClass();
+        navbar.removeClass();
 
         if (nextIndex > index) {
           logo.addClass('delay');
@@ -55,6 +57,7 @@
         if (nextIndex === 1) {
           btnReady.addClass('btn-primary');
           logo.addClass('hidden');
+          navbar.addClass('hidden');
         } else if (nextIndex === 2 || nextIndex === 4) {
           btnReady.addClass('btn-primary');
           logo.addClass('black');

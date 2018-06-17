@@ -71,7 +71,7 @@
       transform: translateY(-50%) translateX(-50%);
 
       &:first-child {
-        top: 0;
+        top: 2%;
         left: 50%;
         transition-delay: 1.5s;
       }
@@ -124,6 +124,7 @@
     }
 
     .content-wrapper {
+      margin-top: 3rem;
       width: 100%;
 
       .content {
@@ -145,19 +146,28 @@
 
     .quest-device-preview {
       display: block;
-      position: relative;
       right: auto;
-      top: 5px;
+      position: relative;
+      top: 45px;
       transform: translateY(0);
       opacity: 1;
-      margin-top: 6rem;
+      width: 100vw;
+      padding: 0 4rem;
+      margin-top: -2rem;
 
-      .icon {
-        opacity: 1;
-      }
+      .animation-wrapper {
+        position: relative;
 
-      & > img {
-        width: 100%;
+        & > img {
+          width: 100%;
+        }
+
+        .icons {
+          .icon {
+            width: 60px;
+            opacity: 1;
+          }
+        }
       }
     }
   }
