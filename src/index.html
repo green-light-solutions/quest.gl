@@ -28,17 +28,19 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
-  <nav>
+  <nav class="hidden">
     <h1>
-      <a href="#hero" id="logo" class=""><img src="/assets/img/logo.svg" alt="Quest.gl"/></a>
+      <a href="#introduction" id="logo" class="hidden"><img src="/assets/img/logo.svg" alt="Quest.gl"/></a>
     </h1>
-    <a href="#contact" class="btn btn-link" id="btn-ready">I'm ready for Quest</a>
+    <a href="#contact" class="btn btn-primary" id="btn-ready">I'm ready for a demo</a>
   </nav>
   <div id="fullpage">
     <div class="section introduction-section">
+      <a href="#contact" class="btn btn-primary">I'm ready for a demo</a>
       <div class="headings">
+        <img src="/assets/img/logo.svg" alt="Quest.gl"/>
         <h2>Build better teams</h2>
-        <h3>Having talent in your organization is one thing.<br/>Knowing where to find it is another.</h3>
+        <h3>Having talent in your organization is one thing. <span class="highlighted">Knowing where to find it is another.</span></h3>
       </div>
       <div class="hero-footer">
         <img src="/assets/img/next-slide.png" srcset="/assets/img/next-slide@2x.png 2x" alt=""/>
@@ -52,17 +54,31 @@
     <div class="section what-is-quest-section">
       <div class="content-wrapper">
         <div class="content">
-          <h2>What is Quest</h2>
-          <p>A mobile application using AI to build small, agile, fast and mission-focused teams.</p>
-          <p>Quest matches talents, skills and experiences with everyday quests.</p>
-          <p>Quest translates your project’s description into a set of skills and helps you build the team you need.</p>
+          <h2>What is Quest?</h2>
+          <p>
+            A mobile application using artificial intelligence to build flexible, agile and mission focused teams.
+          </p>
+          <p>
+            Quest translates your project‘s description into a set of skills and matches them with talents in your organization.
+          </p>
         </div>
       </div>
-      <img class="quest-device-preview" src="/assets/img/device-preview.png" srcset="/assets/img/device-preview@2x.png 2x" alt="">
+      <div class="quest-device-preview">
+        <div class="animation-wrapper">
+          <img src="/assets/img/product-preview.png" srcset="/assets/img/product-preview@2x.png 2x" alt=""/>
+          <div class="icons">
+            <img class="icon" src="/assets/img/preview-icons/icon1.png" srcset="/assets/img/preview-icons/icon1@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon2.png" srcset="/assets/img/preview-icons/icon2@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon3.png" srcset="/assets/img/preview-icons/icon3@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon4.png" srcset="/assets/img/preview-icons/icon4@2x.png 2x" alt=""/>
+            <img class="icon" src="/assets/img/preview-icons/icon5.png" srcset="/assets/img/preview-icons/icon5@2x.png 2x" alt=""/>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="section how-it-works-section">
       <div class="video-container">
-        <h2>See how it works</h2>
+        <h2>See how Quest works</h2>
         <div class="video-wrapper" style="position: relative;">
           <div class="overlay right"></div>
           <div class="overlay left"></div>
@@ -152,13 +168,16 @@
     <div class="section contact-section">
       <div class="content-wrapper">
         <div class="content">
-          <h2 id="output-message-heading">Ready to upgrade your company?</h2>
+          <h2 id="output-message-heading">Want to discover hidden talent in your company?</h2>
           <h3 id="output-message">Request a Quest demo</h3>
 
           <form id="contact-form">
             <div class="input-wrapper">
               <input class="field" name="email" id="user-input-email" type="email" required placeholder="Your email"/>
-              <button class="form-btn" type="submit">Submit</button>
+              <button class="form-btn" type="submit">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                <span>Submit</span>
+              </button>
             </div>
           </form>
         </div>
@@ -166,11 +185,15 @@
       <footer>
         <div class="footer-left">
           <div class="green-light">
-            <img src="assets/img/gl-logo.svg" alt="green-light.com">
+            <div class="gl-logo-wrap">
+              <a href="https://green-light.com/" target="_blank">
+                <img src="assets/img/gl-logo.svg" alt="green-light.com">
+              </a>
+            </div>
             <p>
-              We are an international team of tech pioneers, creatives and coding wizards that strives to streamline the relationship between people and technology.
+              We are an international team of tech pioneers, creatives and coding wizards building technology solutions that make life and work better.
             </p>
-            <a href="https://green-light.com/" target="_blank">Green-light.com <i class="fa fa-fw fa-arrow-right"></i></a>
+            <a class="gl-link" href="https://green-light.com/" target="_blank">Green-light.com <img class="right-arrow" src="assets/img/arrow-left.svg"></a>
           </div>
         </div>
         <div class="footer-right">

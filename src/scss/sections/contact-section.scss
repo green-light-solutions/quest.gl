@@ -1,7 +1,9 @@
+$footer-height: 200px;
+
 .section.contact-section {
   position: relative;
   padding-top: 0 !important;
-  padding-bottom: 250px;
+  padding-bottom: $footer-height;
 
   .content-wrapper {
     background: url('../../assets/img/contact-bg.jpg') no-repeat center;
@@ -21,9 +23,9 @@
       padding: 0 20px;
 
       h2 {
-        font-size: 8rem;
+        font-size: 5.5rem;
         font-weight: bold;
-        line-height: 9rem;
+        line-height: 6rem;
         margin-bottom: 3.5rem;
       }
 
@@ -57,6 +59,28 @@
           border: 0;
           outline: 0;
           cursor: pointer;
+
+          .fa {
+            position: relative;
+            left: -1px;
+          }
+
+          @media screen and (max-width: $screen-sm-max) {
+            width: auto;
+            padding: 0 15px;
+            position: relative;
+            top: 2px;
+
+            span {
+              display: none;
+            }
+          }
+
+          @media screen and (min-width: $screen-md-min) {
+            .fa {
+              display: none;
+            }
+          }
         }
 
         .field {
@@ -79,11 +103,12 @@
 
   footer {
     position: absolute;
-    height: 250px;
     bottom: 0;
     display: table;
     width: 100%;
     padding: 0 10%;
+    background-color: $color-white;
+    height: $footer-height;
 
     .footer-left,
     .footer-right {
@@ -105,16 +130,27 @@
     .footer-left {
       .green-light {
         max-width: 380px;
+        padding-top: 2rem;
+        margin-bottom: 3rem;
 
         img {
           max-width: 100%;
           margin-bottom: 1rem;
         }
 
+        .right-arrow {
+          margin: 0;
+        }
+
         p {
           font-size: 1.4rem;
           line-height: 1.8rem;
           margin-bottom: 1.5rem;
+
+          a {
+            font-weight: normal;
+            text-decoration: underline;
+          }
         }
 
         a {
@@ -137,65 +173,28 @@
         padding: 0 20px;
 
         h2 {
-          font-size: 4rem;
+          font-size: 3rem;
           font-weight: bold;
-          line-height: 5rem;
+          line-height: 4rem;
           margin-bottom: 2rem;
         }
 
         h3 {
-          font-family: $font-proxima-nova;
           font-size: 2rem;
           line-height: 2.5rem;
-          color: #e0e0e0;
-          font-weight: lighter;
           margin-bottom: 5rem;
         }
 
-        .input-wrapper {
-          background-color: $color-white;
-          border-radius: 30px;
-          padding: 2px;
-          width: 600px;
-          max-width: 100%;
-          position: relative;
-          display: inline-block;
-
-          .form-btn {
-            border-radius: 26px;
-            background-color: #FF7C00;
-            width: 110px;
-            font-size: 2rem;
-            font-weight: bold;
-            line-height: 49px;
-            color: $color-white;
-            text-transform: uppercase;
-            border: 0;
-            outline: 0;
-            cursor: pointer;
-          }
-
-          .field {
-            height: 55px;
-            border: 0;
-            outline: 0;
-            font-size: 2rem;
-            width: calc(100% - 132px);
-            background-color: $color-white !important;
-            margin-left: 12px;
-            border-radius: 26px;
-
-            &::placeholder {
-              color: #a8a8a8;
-            }
-          }
+        .input-wrapper .field {
+          width: calc(100% - 72px);
+          font-size: 1.4rem;
         }
       }
     }
 
     footer {
-      height: 100px;
       padding: 0 20px;
+      position: static;
 
       .footer-left,
       .footer-right {
@@ -203,24 +202,27 @@
         text-align: left;
       }
 
-      .footer-right .fa {
-        margin: 4px 8px 0 -4px;
-        font-size: 2rem;
-        color: $color-black;
+      .footer-right {
+        display: none;
+
+        .fa {
+          margin: 4px 8px 0 -4px;
+          font-size: 2rem;
+        }
       }
 
       .footer-left {
         .green-light {
           max-width: none;
+          padding-top: 0;
 
-          img {
-            max-width: 100%;
-            margin: 1.8rem 0 0.9rem 0;
-          }
+          .gl-logo-wrap {
+            width: 100%;
+            margin: 3.3rem 0 0.9rem 0;
 
-          p,
-          a {
-            display: none;
+            img {
+              max-width: 70%;
+            }
           }
         }
       }

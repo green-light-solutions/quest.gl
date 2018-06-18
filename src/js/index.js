@@ -3,13 +3,7 @@
     const logo = $('#logo');
     const btnReady = $('#btn-ready');
     const contactForm = $('#contact-form');
-
-    const autoSlide = function() {
-      clearTimeout($.fn.fullpage.sliderTimeout);
-      $.fn.fullpage.sliderTimeout = setTimeout(() => {
-        $.fn.fullpage.moveSlideRight();
-      }, 7e3);
-    };
+    const navbar = $('nav');
 
     $.get('/assets/img/logo.svg', response => {
       logo.html(jQuery(response).find('svg'));
@@ -26,8 +20,8 @@
         data: JSON.stringify({ email: contactForm.find('#user-input-email').val() }),
         dataType: 'json',
         success: () => {
-          $('#output-message-heading').text('Thank you');
-          $('#output-message').text('for submitting your email');
+          $('#output-message-heading').text('We appreciate your interest in Quest');
+          $('#output-message').text('Our team will be in touch with you soon to schedule a demo.');
           contactForm.hide();
         },
         error: () => {
@@ -49,10 +43,11 @@
       slidesNavPosition: 'bottom',
       controlArrows: false,
       paddingTop: '55px',
-      onSlideLeave: autoSlide,
+      responsiveWidth: 768,
       onLeave: (index, nextIndex) => {
         logo.removeClass();
         btnReady.removeClass();
+        navbar.removeClass();
 
         if (nextIndex > index) {
           logo.addClass('delay');
@@ -60,16 +55,17 @@
         }
 
         if (nextIndex === 1) {
-          btnReady.addClass('btn-link');
+          btnReady.addClass('btn-primary');
+          logo.addClass('hidden');
+          navbar.addClass('hidden');
         } else if (nextIndex === 2 || nextIndex === 4) {
           btnReady.addClass('btn-primary');
           logo.addClass('black');
           window.gtag('event', 'video', {'event_category': 'play' });
         } else if (nextIndex !== 3) {
-          btnReady.addClass('hidden');
+          navbar.addClass('hidden');
         } else if (nextIndex === 3) {
           logo.addClass('white');
-          autoSlide();
         }
       },
     });

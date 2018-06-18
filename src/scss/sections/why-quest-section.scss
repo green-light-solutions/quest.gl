@@ -1,20 +1,24 @@
 .section.why-quest-section {
   text-align: center;
   position: relative;
+  width: 100%;
+  overflow-x: hidden;
 
-  &::before {
-    content: 'What can Quest do for your company?';
-    font-family: $font-europa;
-    font-weight: bold;
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    font-size: 15.5rem;
-    line-height: 16rem;
-    height: 34rem;
-    overflow-y: hidden;
-    color: #eee;
-    opacity: .5;
+  @media screen and (min-width: $screen-md-min) {
+    &::before {
+      content: 'What can Quest do for your company?';
+      font-family: $font-europa;
+      font-weight: bold;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      font-size: 15.5rem;
+      line-height: 16rem;
+      height: 34rem;
+      overflow-y: hidden;
+      color: #eee;
+      opacity: .5;
+    }
   }
 
   h2 {
@@ -24,7 +28,7 @@
     font-weight: bold;
     font-size: 5.5rem;
     line-height: 6.8rem;
-    margin-bottom: 10rem;
+    margin-bottom: 6rem;
     max-width: 1000px;
     display: inline-block;
   }
@@ -49,9 +53,13 @@
         max-width: 100%;
         display: inline-block;
         margin: 50px 0;
-        transition: transform 1s ease-in-out $scrolling-speed, opacity 1s ease-in-out $scrolling-speed;
-        transform: translateY(150%);
-        opacity: 0;
+        transform: none;
+
+        @media screen and (min-width: $screen-md-min) {
+          transition: transform 1s ease-in-out $scrolling-speed, opacity 1s ease-in-out $scrolling-speed;
+          transform: translateY(150%);
+          opacity: 0;
+        }
 
         .image-wrapper img {
           max-width: 100%;
@@ -98,6 +106,7 @@
         display: table;
         width: 100%;
         padding: 0 2rem;
+        margin-bottom: 15rem;
       }
 
       .display-table-cell {
@@ -120,6 +129,7 @@
             font-weight: bold;
             line-height: 1.5rem;
             height: 50px;
+            padding: 0 .5em;
           }
         }
       }
