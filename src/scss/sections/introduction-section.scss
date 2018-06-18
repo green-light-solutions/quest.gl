@@ -4,6 +4,16 @@
   position: relative;
   overflow: hidden;
 
+  .btn-primary {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    @media screen and (min-width: $screen-md-min) {
+      display: none;
+    }
+  }
+
   &::before {
     position: absolute;
     content: '';
@@ -28,7 +38,7 @@
 
     img {
       height: 80px;
-      margin-bottom: 4rem;
+      margin-bottom: 6rem;
     }
 
     h2 {
@@ -56,6 +66,8 @@
 
   @media screen and (max-width: $screen-sm-max) {
     .headings {
+      margin-bottom: 8rem;
+
       img {
         height: 60px;
       }

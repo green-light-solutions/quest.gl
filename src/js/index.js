@@ -63,7 +63,7 @@
           logo.addClass('black');
           window.gtag('event', 'video', {'event_category': 'play' });
         } else if (nextIndex !== 3) {
-          btnReady.addClass('hidden');
+          navbar.addClass('hidden');
         } else if (nextIndex === 3) {
           logo.addClass('white');
         }

@@ -60,6 +60,11 @@ $footer-height: 200px;
           outline: 0;
           cursor: pointer;
 
+          .fa {
+            position: relative;
+            left: -1px;
+          }
+
           @media screen and (max-width: $screen-sm-max) {
             width: auto;
             padding: 0 15px;

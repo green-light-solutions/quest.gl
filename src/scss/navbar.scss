@@ -107,6 +107,10 @@ html body nav {
       display: block;
       color: $color-primary;
       border-color: $color-primary;
+
+      &.hidden {
+        opacity: 0;
+      }
     }
   }
 }
