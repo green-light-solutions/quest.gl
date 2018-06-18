@@ -64,6 +64,10 @@
     transition: transform .6s ease-in $scrolling-speed, opacity 1s ease-in $scrolling-speed;
     opacity: 0;
 
+    .animation-wrapper > img {
+      display: block;
+    }
+
     .icon {
       position: absolute;
       opacity: 0;

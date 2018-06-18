@@ -61,14 +61,18 @@ $footer-height: 200px;
           cursor: pointer;
 
           @media screen and (max-width: $screen-sm-max) {
-            display: none;
+            width: auto;
+            padding: 0 15px;
+            position: relative;
+            top: 2px;
+
+            span {
+              display: none;
+            }
           }
 
-          &.mobile {
-            width: 52px;
-            display: inline-block;
-
-            @media screen and (min-width: $screen-md-min) {
+          @media screen and (min-width: $screen-md-min) {
+            .fa {
               display: none;
             }
           }
@@ -178,6 +182,7 @@ $footer-height: 200px;
 
         .input-wrapper .field {
           width: calc(100% - 72px);
+          font-size: 1.4rem;
         }
       }
     }
