@@ -61,11 +61,12 @@
         } else if (nextIndex === 2 || nextIndex === 4) {
           btnReady.addClass('btn-primary');
           logo.addClass('black');
-          window.gtag('event', 'video', {'event_category': 'play' });
         } else if (nextIndex !== 3) {
           navbar.addClass('hidden');
+          btnReady.addClass('hidden');
         } else if (nextIndex === 3) {
           logo.addClass('white');
+          window.gtag('event', 'video', {'event_category': 'play' });
         }
       },
     });
