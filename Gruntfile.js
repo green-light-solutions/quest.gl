@@ -30,9 +30,12 @@ module.exports = function(grunt) {
         options: {
           removeComments: true,
         },
-        files: {
-          '<%= paths.dest.code %>/index.html': 'src/index.html',
-        },
+        files: [{
+          expand: true,
+          cwd: 'src',
+          src: ['**/*.html', '*.html'],
+          dest: '<%= paths.dest.code %>'
+        }]
       },
     },
     uglify: {
@@ -81,8 +84,8 @@ module.exports = function(grunt) {
       options: {
         livereload: true,
       },
-      index: {
-        files: ['src/index.html'],
+      html: {
+        files: ['src/*.html'],
         tasks: ['htmlmin'],
         options: {
           spawn: false,
