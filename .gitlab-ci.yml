@@ -8,10 +8,10 @@ stages:
   - deploy
 
 before_script:
-  - docker login -u "$DOCKER_LOGIN" -p "$DOCKER_PASSWORD" docker-registry.green-light.com
+  - docker login -u "$DOCKER_LOGIN_DEV" -p "$DOCKER_PASSWORD_DEV" registry.green-light.com
   - IMAGE_NAME=$(date +%y%m%d)-$(echo $CI_COMMIT_SHA | cut -c 1-7)
-  - DEV_TAG=docker-registry.green-light.com/quest/microsite:latest-dev
-  - PROD_TAG=docker-registry.green-light.com/quest/microsite:latest
+  - DEV_TAG=registry.green-light.com/quest/microsite:latest-dev
+  - PROD_TAG=registry.green-light.com/quest/microsite:latest
 
 build-dev:
   stage: build
