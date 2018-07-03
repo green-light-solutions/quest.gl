@@ -11,18 +11,16 @@ stages:
 before_script:
   - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" $CI_REGISTRY
   - IMAGE_NAME=$(echo $CI_COMMIT_SHA | cut -c 1-7)
-  - DEV_TAG=$CI_REGISTRY/$CI_PROJECT_PATH/microsite:latest-dev
+  - DEV_IMAGE=$CONTAINER_IMAGE/microsite:latest-dev
   - PROD_TAG=$CI_REGISTRY/$CI_PROJECT_PATH/microsite:latest-prod
 
 build-dev:
   stage: build
   script:
-    - docker pull $CONTAINER_IMAGE/microsite:latest-dev || true
-    - docker build --cache-from $CONTAINER_IMAGE/microsite:latest-dev --tag $CONTAINER_IMAGE/microsite:$IMAGE_NAME --tag $CONTAINER_IMAGE/microsite:latest-dev .
+    - docker pull $DEV_IMAGE || true
+    - docker build --cache-from $DEV_IMAGE --tag $CONTAINER_IMAGE/microsite:$IMAGE_NAME --tag $DEV_IMAGE .
     - docker push $CONTAINER_IMAGE/microsite:$IMAGE_NAME
-    - docker push $CONTAINER_IMAGE/microsite:latest-dev
-    #- docker build --pull -t "$DEV_TAG" .
-    #- docker push "$DEV_TAG"
+    - docker push $DEV_IMAGE
   tags:
     - docker
     - vshosting-cluster
