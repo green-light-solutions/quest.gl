@@ -19,6 +19,7 @@ build-dev:
   script:
     - docker pull $DEV_IMAGE || true
     - docker build --cache-from $DEV_IMAGE --tag $CONTAINER_IMAGE/microsite:$IMAGE_NAME --tag $DEV_IMAGE .
+    - docker rmi $DEV_IMAGE
     - docker push $CONTAINER_IMAGE/microsite:$IMAGE_NAME
     - docker push $DEV_IMAGE
   tags:
