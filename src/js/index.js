@@ -16,7 +16,7 @@
       $.ajax({
         type: 'POST',
         contentType: 'application/json',
-        url: 'https://api.dev.quest.gl/marketing-data/contacts',
+        url: config.apiUrl + '/marketing-data/contacts',
         data: JSON.stringify({ email: contactForm.find('#user-input-email').val() }),
         dataType: 'json',
         success: () => {

@@ -17,7 +17,7 @@ before_script:
 build-dev:
   stage: build
   script:
-    - docker build --pull -t "$DEV_TAG" .
+    - docker build --build-arg CONFIG_ENV=dev --pull -t "$DEV_TAG" .
     - docker push "$DEV_TAG"
   tags:
     - docker
@@ -28,7 +28,7 @@ build-dev:
 build-prod:
   stage: build
   script:
-    - docker build --pull -t "$PROD_TAG" .
+    - docker build --build-arg CONFIG_ENV=prod --pull -t "$PROD_TAG" .
     - docker push "$PROD_TAG"
   tags:
     - docker

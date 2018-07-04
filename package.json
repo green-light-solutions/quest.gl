@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "start": "grunt",
-    "build": "grunt build"
+    "build": "grunt build --env=$CONFIG_ENV"
   },
   "dependencies": {
     "font-awesome": "4.7.0",

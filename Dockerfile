@@ -11,6 +11,7 @@ ADD yarn.lock yarn.lock
 ADD package.json package.json
 RUN yarn
 
+ARG CONFIG_ENV=$CONFIG_ENV
 ADD . /quest-microsite
 RUN yarn build
 
