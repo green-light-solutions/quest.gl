@@ -7,10 +7,13 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
+  const env = grunt.option('env') || 'dev';
+
   grunt.initConfig({
     paths: {
       src: {
         js: 'src/js/**/*.js',
+        config: 'src/config/config.' + env + '.js',
         scss: 'src/scss/main.scss',
       },
       dest: {
@@ -48,7 +51,10 @@ module.exports = function(grunt) {
         },
         files: [
           {
-            src: ['<%= paths.src.js %>'],
+            src: [
+              '<%= paths.src.config %>',
+              '<%= paths.src.js %>',
+            ],
             dest: '<%= paths.dest.code %>/bundle.min.js',
           },
         ],
