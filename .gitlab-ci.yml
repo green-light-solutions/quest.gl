@@ -6,7 +6,6 @@ variables:
 
 stages:
   - build
-  #- deploy
 
 before_script:
   - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
@@ -24,28 +23,6 @@ build-dev:
     - docker push $CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$CI_BUILD_REF
     - docker push $IMAGE_DEV
     - docker push $IMAGE_NAME
-  tags:
-    - docker
-    - vshosting-cluster
-  only:
-    - dev
-
-build-prod:
-  stage: build
-  script:
-    - docker build --build-arg CONFIG_ENV=prod --pull -t "$PROD_TAG" .
-    - docker push "$PROD_TAG"
-  tags:
-    - docker
-    - vshosting-cluster
-  only:
-    - master
-
-deploy-dev:
-  stage: deploy
-  script:
-    - docker pull $DEV_TAG
-    - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $DEV_TAG) quest-dev_microsite
   tags:
     - docker
     - vshosting-cluster
