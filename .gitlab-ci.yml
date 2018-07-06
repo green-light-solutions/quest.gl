@@ -17,7 +17,7 @@ build-dev:
   stage: build
   script:
     - docker pull $IMAGE_DEV || true
-    - docker build --build-arg CONFIG_ENV=dev  --cache-from $IMAGE_DEV --tag $CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$CI_BUILD_REF --tag $IMAGE_DEV --tag dev-$IMAGE_NAME
+    - docker build --build-arg CONFIG_ENV=dev --cache-from $IMAGE_DEV --tag $CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$CI_BUILD_REF --tag $IMAGE_DEV --tag dev-$IMAGE_NAME
     #- docker build --build-arg CONFIG_ENV=dev --pull -t "$DEV_TAG" .
     #- docker push "$DEV_TAG"
     - docker push $CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$CI_BUILD_REF
