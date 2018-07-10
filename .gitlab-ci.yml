@@ -2,14 +2,15 @@ image: docker:latest
 
 variables:
   DOCKER_DRIVER: overlay2
-  IMAGE_DEV: $CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-latest
+  IMAGE_DEV: $CI_REGISTRY/$CI_PROJECT_PATH/microsite:latest-dev
 
 stages:
   - build
+  - deploy
 
 before_script:
   - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
-  - IMAGE_NAME=dev-$(echo $CI_COMMIT_SHA | cut -c 1-7)
+  - IMAGE_NAME=$(echo $CI_COMMIT_SHA | cut -c 1-7)
   - DEV_TAG=$CI_REGISTRY/$CI_PROJECT_PATH/microsite:latest-dev
   - PROD_TAG=$CI_REGISTRY/$CI_PROJECT_PATH/microsite:latest-prod
 
@@ -17,56 +18,35 @@ build-dev:
   stage: build
   script:
     - docker pull $IMAGE_DEV || true
-    - docker build --build-arg CONFIG_ENV=dev --cache-from $IMAGE_DEV --tag $IMAGE_DEV --tag $CI_REGISTRY/$CI_PROJECT_PATH/microsite:$IMAGE_NAME .
-    
-  ### GET JWT TOKEN FOR REGISTRY using $GITLAB_ACCESS_TOKEN as login
-    - 'curl -L https://$CI_REGISTRY/jwt/auth
-        --get
-        --v
-        --include
-        -d client_id=docker
-        -d offline_token=true
-        -d service=container_registry
-        -d "scope=repository:$IMAGE_DEV:pull,*"
-        --fail
-        --user "quest-ci:$CI_JOB_TOKEN"'
-  ### EXTRACT JWT TOKEN FROM JSON ANSWER 
-    - 'export CI_REGISTRY_TOKEN=$(
-        curl -L https://$CI_REGISTRY/jwt/auth
-        --get
-        -d client_id=docker
-        -d offline_token=true
-        -d service=container_registry
-        -d "scope=repository:$IMAGE_DEV:pull,*"
-        --fail
-        --user "quest-ci:$CI_JOB_TOKEN"
-        | sed -r "s/(\{\"token\":\"|\"\})//g"
-      )'
-  ### EXTRACT SHA OF TAG TO BE DELETED USING DOCKER REGISTRY API
-    - 'export MANIFEST_SHA_TO_BE_DELETED=$(
-        curl -L https://$CI_REGISTRY/v2/$CI_PROJECT_PATH/microsite/manifests/dev-latest
-          --head 
-          --fail
-          -H "accept: application/vnd.docker.distribution.manifest.v2+json"
-          -H "authorization: Bearer $CI_REGISTRY_TOKEN"
-        | grep -i "Docker-Content-Digest"
-        | grep -o -i "sha256:\w\+"
-      )'
-  ### DELETE TAG
-    - 'curl -L "https://$CI_REGISTRY/v2/$CI_PROJECT_PATH/microsite/manifests/$MANIFEST_SHA_TO_BE_DELETED"
-        -X DELETE
-        --include
-        -v
-        -H "accept: application/vnd.docker.distribution.manifest.v2+json"
-        -H "authorization: Bearer $CI_REGISTRY_TOKEN"'
-    
+    - docker build --build-arg CONFIG_ENV=dev  --cache-from $IMAGE_DEV --tag $CI_REGISTRY/$CI_PROJECT_PATH/microsite:$CI_BUILD_REF --tag $IMAGE_DEV
+    #- docker build --build-arg CONFIG_ENV=dev --pull -t "$DEV_TAG" .
+    #- docker push "$DEV_TAG"
+    - docker push $CI_REGISTRY/$CI_PROJECT_PATH/microsite:$CI_BUILD_REF
     - docker push $IMAGE_DEV
-    - docker push $CI_REGISTRY/$CI_PROJECT_PATH/microsite:$IMAGE_NAME
   tags:
     - docker
     - vshosting-cluster
   only:
     - dev
 
+build-prod:
+  stage: build
+  script:
+    - docker build --build-arg CONFIG_ENV=prod --pull -t "$PROD_TAG" .
+    - docker push "$PROD_TAG"
+  tags:
+    - docker
+    - vshosting-cluster
+  only:
+    - master
 
-    
+deploy-dev:
+  stage: deploy
+  script:
+    - docker pull $DEV_TAG
+    - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $DEV_TAG) quest-dev_microsite
+  tags:
+    - docker
+    - vshosting-cluster
+  only:
+    - dev
