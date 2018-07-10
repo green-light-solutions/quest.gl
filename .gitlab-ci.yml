@@ -18,6 +18,48 @@ build-dev:
   script:
     - docker pull $IMAGE_DEV || true
     - docker build --build-arg CONFIG_ENV=dev --cache-from $IMAGE_DEV --tag $IMAGE_DEV --tag $CI_REGISTRY/$CI_PROJECT_PATH/microsite:$IMAGE_NAME .
+    
+  ### GET JWT TOKEN FOR REGISTRY using $GITLAB_ACCESS_TOKEN as login
+    - 'curl https://$CI_REGISTRY/jwt/auth
+        --get
+        --v
+        --include
+        -d client_id=docker
+        -d offline_token=true
+        -d service=container_registry
+        -d "scope=repository:$IMAGE_DEV:pull,*"
+        --fail
+        --user "quest-ci:$CI_JOB_TOKEN"'
+  ### EXTRACT JWT TOKEN FROM JSON ANSWER 
+    - 'export CI_REGISTRY_TOKEN=$(
+        curl https://$CI_REGISTRY/jwt/auth
+        --get
+        -d client_id=docker
+        -d offline_token=true
+        -d service=container_registry
+        -d "scope=repository:$IMAGE_DEV:pull,*"
+        --fail
+        --user "quest-ci:$CI_JOB_TOKEN"
+        | sed -r "s/(\{\"token\":\"|\"\})//g"
+      )'
+  ### EXTRACT SHA OF TAG TO BE DELETED USING DOCKER REGISTRY API
+    - 'export MANIFEST_SHA_TO_BE_DELETED=$(
+        curl https://$CI_REGISTRY/v2/$CI_PROJECT_PATH/microsite/manifests/dev-latest
+          --head 
+          --fail
+          -H "accept: application/vnd.docker.distribution.manifest.v2+json"
+          -H "authorization: Bearer $CI_REGISTRY_TOKEN"
+        | grep -i "Docker-Content-Digest"
+        | grep -o -i "sha256:\w\+"
+      )'
+  ### DELETE TAG
+    - 'curl "https://$CI_REGISTRY/v2/$CI_PROJECT_PATH/microsite/manifests/$MANIFEST_SHA_TO_BE_DELETED"
+        -X DELETE
+        --include
+        -v
+        -H "accept: application/vnd.docker.distribution.manifest.v2+json"
+        -H "authorization: Bearer $CI_REGISTRY_TOKEN"'
+    
     - docker push $IMAGE_DEV
     - docker push $CI_REGISTRY/$CI_PROJECT_PATH/microsite:$IMAGE_NAME
   tags:
@@ -25,3 +67,6 @@ build-dev:
     - vshosting-cluster
   only:
     - dev
+
+
+    
