@@ -33,6 +33,8 @@ build-dev:
 
 deploy-dev:
   stage: deploy
+  environment:
+    name: prod
   image: alpine:latest
   script:
     - apk update  && apk add --no-cache curl
