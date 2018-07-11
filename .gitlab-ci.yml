@@ -70,7 +70,7 @@ deploy-prod:
     - kubectl config use-context gke_quest-1efc7_europe-west2-b_k8s-cluster
     #- kubectl set image deployment/prod-microsite microsite="$CI_REGISTRY/$CI_PROJECT_PATH/microsite:prod-$IMAGE_NAME" --namespace=prod
     #- kubectl rollout status deployment/prod-microsite --namespace=prod
-    - kubectl patch deployment prod-microsite --namespace=prod -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
+    - kubectl patch deployment prod-microsite --namespace=prod -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\",\"version\":\"$CI_COMMIT_SHA\"}}}}}"
   tags:
     - vshosting-cluster
   only:
