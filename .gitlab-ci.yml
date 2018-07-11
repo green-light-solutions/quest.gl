@@ -33,7 +33,14 @@ build-dev:
 
 deploy-dev:
   stage: deploy
+  image: alpine:lastest
   script:
+    - apk update  && apk add --no-cache curl
+    - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    - chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
+    - mkdir -p $HOME/.kube
+    - echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
+    - kubectl config view
     - kubectl set image deployment/prod-microsite microsite="$CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$IMAGE_NAME"
     - kubectl rollout status deployment/prod-microsite
   tags:
