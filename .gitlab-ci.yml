@@ -39,6 +39,7 @@ build-prod:
 deploy-dev:
   stage: deploy
   script:
+    - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
     - docker pull $DEV_TAG
     - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $DEV_TAG) quest-dev_microsite
   tags:
@@ -69,7 +70,7 @@ deploy-prod:
     - kubectl config use-context gke_quest-1efc7_europe-west2-b_k8s-cluster
     #- kubectl set image deployment/prod-microsite microsite="$CI_REGISTRY/$CI_PROJECT_PATH/microsite:prod-$IMAGE_NAME" --namespace=prod
     #- kubectl rollout status deployment/prod-microsite --namespace=prod
-    - kubectl patch deployment prod-api --namespace=prod -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
+    - kubectl patch deployment prod-microsite --namespace=prod -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
   tags:
     - vshosting-cluster
   only:
