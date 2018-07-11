@@ -74,4 +74,4 @@ deploy-prod:
   tags:
     - vshosting-cluster
   only:
-    - prod
+    - master
