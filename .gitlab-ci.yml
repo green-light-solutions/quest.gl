@@ -26,6 +26,7 @@ build-dev:
     - docker push $CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$IMAGE_NAME
     
   tags:
+    - docker
     - vhosting-cluster
   only:
     - dev
@@ -37,6 +38,7 @@ deploy-dev:
     - kubectl set image deployment/prod-microsite microsite="$CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$IMAGE_NAME"
     - kubectl rollout status deployment/prod-microsite
   tags:
+    - docker
     - vhosting-cluster
   only:
     - dev
