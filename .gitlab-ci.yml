@@ -9,7 +9,6 @@ stages:
   - deploy
 
 before_script:
-  - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
   - IMAGE_NAME=$(echo $CI_COMMIT_SHA | cut -c 1-7)
   - DEV_TAG=$CI_REGISTRY/$CI_PROJECT_PATH/microsite:latest-dev
   - PROD_TAG=$CI_REGISTRY/$CI_PROJECT_PATH/microsite:latest-prod
@@ -17,6 +16,7 @@ before_script:
 build-dev:
   stage: build
   script:
+    - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
     - docker pull $IMAGE_DEV || true
     - docker build --build-arg CONFIG_ENV=dev  --cache-from $IMAGE_DEV --tag $CI_REGISTRY/$CI_PROJECT_PATH/microsite:$CI_BUILD_REF --tag $IMAGE_DEV --tag $CI_REGISTRY/$CI_PROJECT_PATH/microsite:dev-$IMAGE_NAME .
     #- docker build --build-arg CONFIG_ENV=dev --pull -t "$DEV_TAG" .
