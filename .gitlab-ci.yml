@@ -59,7 +59,7 @@ deploy-prod:
     - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
     - chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
     - mkdir -p $HOME/.kube
-    - echo -n $KUBE_CONFIG_PROD | base64 -d > $HOME/.kube/config
+    - echo -n $QUEST_KUBE_CONFIG_PROD | base64 -d > $HOME/.kube/config
     - kubectl config use-context k8s-cluster
     #- kubectl set image deployment/prod-microsite microsite="$CI_REGISTRY/$CI_PROJECT_PATH/microsite:prod-$IMAGE_NAME" --namespace=prod
     #- kubectl rollout status deployment/prod-microsite --namespace=prod
