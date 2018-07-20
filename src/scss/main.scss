@@ -34,11 +34,17 @@ html {
       cursor: default;
     }
   }
-}
 
-@media screen and (min-width: $screen-md-min) {
-  .section-test {
-    display: none;
+  @media screen and (max-width: $screen-sm-max) {
+    .desktop {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: $screen-md-min) {
+    .mobile {
+      display: none;
+    }
   }
 }
 
