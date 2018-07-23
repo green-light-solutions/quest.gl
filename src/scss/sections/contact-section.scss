@@ -1,25 +1,21 @@
 $footer-height: 250px;
-$footer-height-mobile: 120px;
+$footer-height-mobile: 70px;
 
 .section.contact-section {
-  padding-top: 0;
   background: url('../../assets/img/contact-bg.jpg') no-repeat center;
   background-size: cover;
 
   .section-wrapper {
-    position: relative;
-    padding-bottom: $footer-height;
     width: 100%;
     height: 100%;
-
-    @media screen and (max-width: $screen-sm-max) {
-      padding-bottom: $footer-height-mobile;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
     .content-wrapper {
-      height: 100%;
       width: 100%;
       position: relative;
+      flex: 1 1 auto;
 
       .content {
         position: absolute;
@@ -111,22 +107,21 @@ $footer-height-mobile: 120px;
     }
 
     footer {
-      position: absolute;
-      bottom: 0;
-      display: table;
+      flex: 0 0 $footer-height;
       width: 100%;
       padding: 0 10%;
       background-color: $color-white;
-      height: $footer-height;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       @media screen and (max-width: $screen-sm-max) {
-        height: $footer-height-mobile;
+        flex: 0 0 $footer-height-mobile;
       }
 
       .footer-left,
       .footer-right {
-        display: table-cell;
+        width: 50%;
         vertical-align: middle;
         color: #6a6a6a;
       }
@@ -179,8 +174,6 @@ $footer-height-mobile: 120px;
     }
 
     @media screen and (max-width: $screen-sm-max) {
-      padding-bottom: 100px;
-
       .content-wrapper {
         .content {
           width: 100%;
@@ -208,34 +201,27 @@ $footer-height-mobile: 120px;
 
       footer {
         padding: 0 20px;
-        position: static;
-
-        .footer-left,
-        .footer-right {
-          display: block;
-          text-align: left;
-        }
 
         .footer-right {
           display: none;
-
-          .fa {
-            margin: 4px 8px 0 -4px;
-            font-size: 2rem;
-          }
         }
 
         .footer-left {
+          width: auto;
+
           .green-light {
             max-width: none;
-            padding-top: 0;
+            margin: auto;
+            padding: 0;
 
             .gl-logo-wrap {
-              width: 100%;
-              margin: 3.3rem 0 0.9rem 0;
+              margin: 0;
+              padding: 0;
 
               img {
-                max-width: 70%;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
               }
             }
           }
