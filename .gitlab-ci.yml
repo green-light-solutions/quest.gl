@@ -15,7 +15,7 @@ before_script:
 build-dev:
   stage: build
   script:
-    - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
+    - docker login -u "quest-ci" -p "$QUEST_CI_JOB_TOKEN" registry.green-light.com
     - docker pull $DEV_TAG || true
     - docker build --build-arg CONFIG_ENV=dev --cache-from "$DEV_TAG" --tag "$DEV_TAG" .
     - docker push "$DEV_TAG"
@@ -29,7 +29,7 @@ build-dev:
 build-prod:
   stage: build
   script:
-    - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
+    - docker login -u "quest-ci" -p "$QUEST_CI_JOB_TOKEN" registry.green-light.com
     - docker pull $PROD_TAG || true
     - docker build --build-arg CONFIG_ENV=prod --cache-from "$PROD_TAG" --tag "$PROD_TAG" .
     - docker push "$PROD_TAG"
@@ -42,7 +42,7 @@ build-prod:
 deploy-dev:
   stage: deploy
   script:
-    - docker login -u "quest-ci" -p "$CI_JOB_TOKEN" registry.green-light.com
+    - docker login -u "quest-ci" -p "$QUEST_CI_JOB_TOKEN" registry.green-light.com
     - docker pull $DEV_TAG
     - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $DEV_TAG) quest-dev_microsite
   tags:
