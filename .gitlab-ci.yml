@@ -41,7 +41,7 @@ build-prod:
   only:
     - master
 
-deploy-prod:
+deploy-dev:
   stage: deploy
   image: alpine:latest
   script:
