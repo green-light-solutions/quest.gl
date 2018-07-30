@@ -8,6 +8,8 @@ stages:
   - deploy
 
 before_script:
+  - SERVICE=microsite
+
   - IMAGE_NAME=$(date +%y%m%d)-$(echo $CI_COMMIT_SHA | cut -c 1-7)
   - DEV_TAG=registry.green-light.com/quest/quest-microsite/microsite:latest-dev
   - PROD_TAG=registry.green-light.com/quest/quest-microsite/microsite:latest-prod
@@ -41,16 +43,20 @@ build-prod:
 
 deploy-dev:
   stage: deploy
+  image: alpine:latest
   script:
-    - docker login -u "quest-ci" -p "$QUEST_CI_JOB_TOKEN" registry.green-light.com
-    - docker pull $DEV_TAG
-    - docker service update --with-registry-auth --image $(docker inspect --type image --format '{{index .RepoDigests 0}}' $DEV_TAG) quest-dev_microsite
+    - apk update  && apk add --no-cache curl
+    - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    - chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
+    - mkdir -p $HOME/.kube
+    - echo -n $QUEST_KUBE_CONFIG_DEV | base64 -d > $HOME/.kube/config
+    - kubectl config use-context k8s-cluster
+    - kubectl patch deployment dev-$SERVICE --namespace=dev -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\",\"version\":\"$CI_COMMIT_SHA\"}}}}}"
   tags:
-    - docker
     - vshosting-cluster
   only:
     - dev
-
+    
 deploy-prod:
   stage: deploy
   image: alpine:latest
@@ -61,9 +67,7 @@ deploy-prod:
     - mkdir -p $HOME/.kube
     - echo -n $QUEST_KUBE_CONFIG_PROD | base64 -d > $HOME/.kube/config
     - kubectl config use-context k8s-cluster
-    #- kubectl set image deployment/prod-microsite microsite="$CI_REGISTRY/$CI_PROJECT_PATH/microsite:prod-$IMAGE_NAME" --namespace=prod
-    #- kubectl rollout status deployment/prod-microsite --namespace=prod
-    - kubectl patch deployment prod-microsite --namespace=prod -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\",\"version\":\"$CI_COMMIT_SHA\"}}}}}"
+    - kubectl patch deployment prod-$SERVICE --namespace=prod -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\",\"version\":\"$CI_COMMIT_SHA\"}}}}}"
   tags:
     - vshosting-cluster
   only:
