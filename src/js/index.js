@@ -83,8 +83,6 @@
         if (nextIndex === 2 || nextIndex === 4) {
           btnReady.addClass('btn-primary');
           logo.addClass('black');
-        } else if (nextIndex !== 3) {
-          btnReady.addClass('hidden');
         } else if (nextIndex === 3) {
           logo.addClass('white');
           window.gtag('event', 'video', {'event_category': 'play' });
