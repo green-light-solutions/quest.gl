@@ -48,11 +48,6 @@
       transform: translateY(150%);
       opacity: 0;
 
-      @media screen and (max-width: $screen-sm-max) {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
       &:nth-child(2) {
         transition-delay: .9s;
       }
@@ -66,7 +61,7 @@
       }
 
       .content {
-        width: 248px;
+        width: 230px;
         max-width: 100%;
         display: inline-block;
         margin: 50px 0;
@@ -92,7 +87,7 @@
           color: $color-gray;
           font-size: 1.8rem;
           line-height: 3.4rem;
-          height: 60px;
+          height: 80px;
         }
       }
     }
@@ -101,8 +96,9 @@
   @media screen and (max-width: $screen-sm-max) {
     background: none;
 
-    &::before {
-      display: none;
+    .icons .icon {
+      transform: translateY(0);
+      opacity: 1;
     }
 
     h2 {
@@ -112,13 +108,40 @@
       padding: 0 20px;
     }
 
+    &::before {
+      display: none;
+    }
+
     .icons .icon {
       flex: 1 1 50%;
 
       .content {
-        display: inline-block;
         margin: 0;
         width: 100%;
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-sm) {
+    .icons .icon {
+      flex: 1 1 100%;
+
+      .content {
+        h3 {
+          font-size: 2rem;
+          font-weight: 600;
+          line-height: 4rem;
+          color: $color-gray;
+          text-transform: uppercase;
+        }
+
+        .label {
+          color: $color-gray;
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+          height: 140px;
+          padding: 0 2rem;
+        }
 
         .image-wrapper {
           padding: 0 2.4rem;
@@ -127,20 +150,6 @@
             max-width: 100%;
             margin-bottom: 1rem;
           }
-        }
-
-        h3 {
-          font-size: 1.4rem;
-          line-height: 1.4rem;
-          margin-bottom: 1rem;
-        }
-
-        .label {
-          color: $color-gray;
-          font-size: 1.1rem;
-          line-height: 1.5rem;
-          height: 50px;
-          margin-bottom: 1rem;
         }
       }
     }
@@ -151,20 +160,6 @@
       font-size: 2.3rem;
       line-height: 3.0rem;
       margin-bottom: 2rem;
-    }
-
-    .icons .icon .content {
-      h3 {
-        font-size: 1.3rem;
-        line-height: 1.3rem;
-        margin-bottom: 1rem;
-      }
-
-      .label {
-        color: $color-gray;
-        font-size: 0.9rem;
-        line-height: 1.3rem;
-      }
     }
   }
 }
