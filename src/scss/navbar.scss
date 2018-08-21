@@ -6,7 +6,7 @@ html body nav {
   padding: 25px 30px;
   width: 100%;
   opacity: 1;
-  transition: opacity .3s linear;
+  transition: all .3s linear;
 
   &.hidden {
     opacity: 1;
@@ -75,12 +75,40 @@ html body nav {
     text-decoration: none;
   }
 
-  @media screen and (max-width: $screen-sm-max) {
+  @media screen and (max-width: $screen-sm) {
     background-color: $color-white;
     border-bottom: 1px solid #e7e7e7;
     padding: 10px 15px;
 
+    #logo,
+    #logo svg .letters,
+    #btn-ready,
+    & {
+      transition-delay: 0s !important;
+    }
+
+    #logo svg {
+      .icon {
+        display: block !important;
+        fill: $color-primary !important;
+      }
+
+      .letters {
+        fill: $color-black;
+      }
+    }
+
+    &.transparent {
+      background-color: transparent;
+      border-color: transparent;
+
+      #logo svg .letters {
+        fill: $color-white;
+      }
+    }
+
     &.hidden {
+      display: block !important;
       opacity: 0;
     }
 
@@ -88,17 +116,6 @@ html body nav {
       #logo, #logo.black, #logo.white, #logo.hidden {
         transition: opacity .3s linear;
         opacity: 1;
-
-        svg {
-          .dot,
-          .icon {
-            fill: $color-primary;
-          }
-
-          .letters {
-            fill: $color-black;
-          }
-        }
       }
     }
 

@@ -48,6 +48,17 @@ html {
   }
 }
 
+@media screen and (max-width: $screen-sm) {
+  .section.why-quest-section {
+    height: auto !important;
+    padding: 0 0 60px;
+
+    .fp-tableCell {
+      height: auto !important;
+    }
+  }
+}
+
 @import './sections/introduction-section';
 @import './sections/what-is-quest-section';
 @import './sections/how-it-works-section';
