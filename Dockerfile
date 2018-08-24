@@ -1,20 +1,20 @@
-FROM node:carbon as node
+FROM node:carbon
 
-ARG CONFIG_ENV=$CONFIG_ENV
+RUN apt-get update && \
+  apt-get install -y nginx && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir /quest-microsite
 WORKDIR /quest-microsite
 
 ADD yarn.lock yarn.lock
 ADD package.json package.json
-RUN yarn install
+RUN yarn
 
 ARG CONFIG_ENV=$CONFIG_ENV
 ADD . /quest-microsite
 RUN yarn build
 
-FROM nginx:1.13
-COPY --from=node /quest-microsite/dist /quest-microsite
-COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /quest-microsite/dist
 
 CMD ["nginx", "-g", "daemon off;"]
