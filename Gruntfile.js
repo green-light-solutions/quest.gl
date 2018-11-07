@@ -1,10 +1,5 @@
 module.exports = function(grunt) {
 
-  const libs = [
-    'node_modules/jquery/dist/jquery.js',
-    'node_modules/fullpage.js/dist/jquery.fullpage.js',
-  ];
-
   require('load-grunt-tasks')(grunt);
 
   const env = grunt.option('env') || 'dev';
@@ -41,35 +36,18 @@ module.exports = function(grunt) {
         }]
       },
     },
-    uglify: {
-      main: {
+    browserify: {
+      dist: {
         options: {
-          compress: true,
-          sourceMap: {
-            includeSources: true,
-          },
+          transform: [["babelify", { "stage": 0 }]]
         },
         files: [
           {
-            src: [
-              '<%= paths.src.config %>',
-              '<%= paths.src.js %>',
-            ],
-            dest: '<%= paths.dest.code %>/bundle.min.js',
+            src: ['<%= paths.src.js %>', '<%= paths.src.config %>'],
+            dest: '<%= paths.dest.code %>/bundle.js',
           },
         ],
-      },
-      lib: {
-        options: {
-          compress: true,
-        },
-        files: [
-          {
-            src: libs,
-            dest: '<%= paths.dest.code %>/lib.min.js',
-          },
-        ],
-      },
+      }
     },
     sass: {
       main: {
@@ -98,8 +76,8 @@ module.exports = function(grunt) {
         },
       },
       js: {
-        files: ['<%= paths.src.js %>'],
-        tasks: ['uglify:main'],
+        files: ['<%= paths.src.js %>', '<%= paths.src.config %>'],
+        tasks: ['browserify'],
         options: {
           spawn: false,
         },
@@ -149,6 +127,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('lint', ['eslint', 'sasslint']);
-  grunt.registerTask('default', ['githooks', 'uglify', 'sass', 'copy', 'htmlmin', 'connect', 'watch']);
-  grunt.registerTask('build', ['lint', 'uglify', 'sass', 'copy', 'htmlmin']);
+  grunt.registerTask('default', ['githooks', 'browserify', 'sass', 'copy', 'htmlmin', 'connect', 'watch']);
+  grunt.registerTask('build', ['lint', 'browserify', 'sass', 'copy', 'htmlmin']);
 };

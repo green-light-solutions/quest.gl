@@ -34,7 +34,7 @@
       $.ajax({
         type: 'POST',
         contentType: 'application/json',
-        url: config.apiUrl + '/marketing-data/contacts',
+        url: window.config.apiUrl + '/marketing-data/contacts',
         data: JSON.stringify({ email: contactForm.find('#user-input-email').val() }),
         dataType: 'json',
         success: () => {
