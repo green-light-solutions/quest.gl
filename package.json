@@ -11,9 +11,6 @@
     "start": "grunt",
     "build": "grunt build --env=$CONFIG_ENV"
   },
-  "dependencies": {
-    "font-awesome": "4.7.0"
-  },
   "devDependencies": {
     "grunt": "^1.0.2",
     "grunt-contrib-concat": "^1.0.1",
